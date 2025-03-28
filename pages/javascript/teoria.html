@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teoría JavaScript</title>
+      <!-- Estilos base -->
+      <link rel="stylesheet" href="/css/code.css">
+      <link rel="stylesheet" href="/css/colores.css">
+      <link rel="stylesheet" href="/css/base.css">
+      <link rel="stylesheet" href="/css/search.css">
+      <!-- Estilo de highlight.js (monokai) -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai.min.css">
+      <!-- Iconos y favicon -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+      <link rel="shortcut icon" href="/img/favicon/favicon.ico" type="image/x-icon">
+      <link rel="shortcut icon" href="/img/favicon/favicon-32x32.png" type="image/png">
+      <link rel="shortcut icon" href="/img/favicon/favicon-16x16.png" type="image/png">
+      <link rel="shortcut icon" href="/img/favicon/apple-touch-icon.png" type="image/png">
+      <link rel="shortcut icon" href="/img/favicon/android-chrome-192x192.png" type="image/png">
+      <link rel="shortcut icon" href="/img/favicon/android-chrome-512x512.png" type="image/png">
+     
+  </head>
+  <body>
+      <header>
+          <nav>
+              <div>
+                  <div class="nav-left">
+                      <button class="menu-toggle" aria-label="Toggle navigation menu">
+                          <i class="fas fa-bars"></i>
+                      </button>
+                      <ul class="menu-items">
+                          <li><a href="/index.html" data-i18n="nav.home">Inicio</a></li>
+                          <li><a href="/pages/formacion.html" data-i18n="nav.education">Formación</a></li>
+                      </ul>
+                  </div>
+                  <div class="nav-right">
+                      <div class="theme-buttons">
+                          <button id="lightMode" class="theme-button" aria-label="Light mode">
+                              <i class="fas fa-sun"></i>
+                          </button>
+                          <button id="darkMode" class="theme-button" aria-label="Dark mode">
+                              <i class="fas fa-moon"></i>
+                          </button>
+                          <button id="systemMode" class="theme-button" aria-label="System mode">
+                              <i class="fas fa-desktop"></i>
+                          </button>
+                      </div>
+                      <div class="language-buttons">
+                          <button id="esButton" class="lang-button" data-lang="es">ES</button>
+                          <button id="enButton" class="lang-button" data-lang="en">EN</button>
+                      </div>
+                  </div>
+              </div>
+          </nav>
+      </header>
+    <main class="code-container">
+        <h1 class="page-title">Teoría JavaScript</h1>
+        <div id="content">
+            <details>
+                <summary>Variables</summary>
+                <pre><code class="language-javascript" data-src="/content/programacion/javascript/teoria/01_variables.js"></code></pre>
+                <pre><code class="language-javascript" data-src="/content/programacion/javascript/teoria/10_metodos_strings.js"></code></pre>
+            </details>
+
+            <details>
+                <summary>Condicionales</summary>
+                <pre><code class="language-javascript" data-src="/content/programacion/javascript/teoria/02_condicionales.js"></code></pre>
+            </details>
+
+            <details>
+                <summary>Operadores lógicos</summary>
+                <pre><code class="language-javascript" data-src="/content/programacion/javascript/teoria/08_operadores_logicos.js"></code></pre>
+            </details>
+
+            <details>
+                <summary>Bucles</summary>
+                <pre><code class="language-javascript" data-src="/content/programacion/javascript/teoria/04_bucle.js"></code></pre>
+                <pre><code class="language-javascript" data-src="/content/programacion/javascript/teoria/12_bucle_while.js"></code></pre>
+                <pre><code class="language-javascript" data-src="/content/programacion/javascript/teoria/14_bucles_for.js"></code></pre>
+            </details>
+
+            <details>
+                <summary>Objetos</summary>
+                <pre><code class="language-javascript" data-src="/content/programacion/javascript/teoria/07_objetos.js"></code></pre>
+                <pre><code class="language-javascript" data-src="/content/programacion/javascript/teoria/13_objetos.js"></code></pre>
+            </details>
+
+            <details>
+                <summary>Arrays</summary>
+                <pre><code class="language-javascript" data-src="/content/programacion/javascript/teoria/06_arrays.js"></code></pre>
+                <pre><code class="language-javascript" data-src="/content/programacion/javascript/teoria/09_arrays.js"></code></pre>
+                <pre><code class="language-javascript" data-src="/content/programacion/javascript/teoria/11_metodos_arrays.js"></code></pre>
+            </details>
+
+            <details>
+                <summary>Funciones</summary>
+                <pre><code class="language-javascript" data-src="/content/programacion/javascript/teoria/15_funciones.js"></code></pre>
+            </details>
+
+            <details>
+                <summary>DOM</summary>
+                <iframe src="/settings/programacion/javascript/teoria/16_DOM.html" sandbox="allow-scripts allow-same-origin"></iframe>
+                <a href="/settings/programacion/javascript/teoria/16_DOM.html">DOM</a>
+                <pre><code class="language-javascript" data-src="/content/programacion/javascript/teoria/16_DOM.js"></code></pre>
+            </details>
+
+            <details>
+                <summary>Repaso</summary>
+                <pre><code class="language-javascript" data-src="/content/programacion/javascript/teoria/repaso_js.js"></code></pre>
+            </details>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <p>&copy; 2025 Daniel Arribas Velázquez</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://github.com/dav-tech-work" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/daniel-arribas-velazquez" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <button id="mailBtn" aria-label="Enviar correo">
+                    <i class="fas fa-envelope"></i>
+                </button>
+            </div>
+        </div>
+    </footer>
+
+   <!-- Highlight.js primero -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+<!-- Seguridad e inicialización -->
+<script type="module" src="/js/seguridad.js"></script>
+<script type="module" src="/js/idioma.js"></script>
+<script type="module" src="/js/navegacion.js"></script>
+<script type="module" src="/js/personalizacion.js"></script>
+<script type="module" src="/js/search.js"></script>
+<script type="module" src="/js/mail.js"></script>
+
+<!-- Mostrar código (ya con highlight cargado) -->
+<script type="module" src="/js/muestra_contenido.js"></script>
+
+</body>
+</html>

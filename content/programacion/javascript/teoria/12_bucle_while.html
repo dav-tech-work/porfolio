@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>While</title>
+    <script src="/settings/js/web_script.js"></script>
+</head>
+<body>
+    
+    <script>
+
+        // let edad = prompt("Por favor dime la edad de la persona")
+
+        // while (edad < 0 || edad > 100) {
+        //     edad = prompt(`${edad} no es una edad correcta\nPor favor inténtalo de nuevo `)            
+        // }
+
+        // alert( `Me has dicho que tiene ${edad} años`)
+        // alert( 'Me has dicho que tiene ${edad} ') // con comilla simple no se muestra la variable
+
+        let control = true
+        while (control) {
+
+            let edad = prompt("Por favor dime la edad de la persona.\nO escribe x para finalizar.")
+
+            edad = edad.trim()
+        
+            console.log("Edad vacía",edad.length);
+
+            if (edad.length == 0) {
+                alert("Hay que introducir una edad correcta")
+            } else if (edad.toLowerCase() == "x") { // caso de querer finalizar el programa
+                alert ("Programa finalizado. Hasta luego. ")
+                control = false
+            } else if (edad < 0 || edad > 100) { // casos de edad incorrecta
+                alert(`${edad} no es una edad correcta\nPor favor inténtalo de nuevo `)
+            } else {
+                alert( `Me has dicho que tiene ${edad} años`)
+                control = false
+            }
+        }
+
+    </script>
+</body>
+</html>

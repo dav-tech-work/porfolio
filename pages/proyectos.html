@@ -1,0 +1,175 @@
+ <!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Proyectos | Daniel Arribas Velázquez</title>
+    <meta name="description" content="Explora los proyectos de Daniel Arribas Velázquez en sistemas, redes, programación y automatización. Desde servidores Proxmox hasta herramientas personalizadas.">
+    <meta name="author" content="Daniel Arribas Velázquez">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#1f1f1f">
+    <link rel="canonical" href="https://daniel-arribas-velazquez.dav-tech.work/pages/proyectos.html">
+
+    <!-- Open Graph (para compartir en redes sociales) -->
+    <meta property="og:title" content="Daniel Arribas Velázquez | Admin. de Sistemas y Seguridad IT">
+    <meta property="og:description" content="Especializado en sistemas, redes y seguridad informática. Portafolio profesional.">
+    <meta property="og:url" content="https://daniel-arribas-velazquez.dav-tech.work">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://daniel-arribas-velazquez.dav-tech.work/img/dav.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Daniel Arribas Velázquez | Admin. de Sistemas y Seguridad IT">
+    <meta name="twitter:description" content="Especializado en sistemas, redes y seguridad informática. Portafolio profesional.">
+    <meta name="twitter:image" content="https://daniel-arribas-velazquez.dav-tech.work/img/dav.png">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/img/dav.png" type="image/png">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="/css/colores.css">
+    <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="/css/proyectos.css">
+    <link rel="stylesheet" href="/css/search.css">
+    <link rel="stylesheet" href="/css/animaciones.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Datos estructurados JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "CollectionPage",
+        "name": "Proyectos IT de Daniel Arribas Velázquez",
+        "description": "Explora proyectos prácticos en sistemas, redes, programación y automatización.",
+        "url": "https://daniel-arribas-velazquez.dav-tech.work/pages/proyectos.html",
+        "creator": {
+            "@type": "Person",
+            "name": "Daniel Arribas Velázquez"
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div>
+                <div class="nav-left">
+                    <a href="/index.html" class="logo-link">
+                        <img src="/img/dav_logo.png" alt="Logo DAV" class="logo-img">
+                    </a>  
+                    <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul class="menu-items">
+                        <li><a href="/index.html" data-i18n="nav.home" data-searchable data-search-title="Inicio">Inicio</a></li>
+                        <li><a href="/pages/proyectos.html" data-i18n="nav.projects" data-searchable data-search-title="Proyectos">Proyectos</a></li>
+                        <li><a href="/pages/curriculum.html" data-i18n="nav.cv" data-searchable data-search-title="Curriculum">Curriculum</a></li>
+                        <li><a href="/pages/formacion.html" data-i18n="nav.education" data-searchable data-search-title="Formación">Formación</a></li>
+                    </ul>
+                </div>
+                <div class="nav-right">
+                    <div class="search-container">
+                        <button class="search-toggle" aria-label="Abrir búsqueda">
+                            <i class="fas fa-search"></i>
+                        </button>
+                        <div class="search-dropdown">
+                            <input type="text" id="searchInput" placeholder="Buscar..." aria-label="Campo de búsqueda">
+                            <button class="close-search" aria-label="Cerrar búsqueda">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <div class="search-results"></div>
+                        </div>
+                    </div>
+                    <button class="theme-toggle" aria-label="Cambiar tema">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <select id="languageSelect" aria-label="Seleccionar idioma">
+                        <option value="es">ES</option>
+                        <option value="en">EN</option>
+                    </select>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="projects-section" data-searchable>
+            <h2 data-i18n="projects.title">Proyectos</h2>
+            <p data-i18n="projects.description">Estos son los proyectos que he realizado y estoy trabajando en este momento.</p>
+        </section>
+        
+        <section class="projects-section" data-searchable>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3 data-i18n="projects.system">Sistema operativo</h3>
+                    <p data-i18n="projects.system.description">
+                        El proyecto consiste en un servidor de proxmox, con diferenes sistemas que dan servicio. 
+                        Un ejemplo es este servidor que estás visitando.
+                    </p>
+                    <p data-i18n="projects.system.status">
+                        El proyecto está en desarrollo continuo de mejora y de securización.
+                    </p>
+                    <img src="/img/proxmox.png" alt="Proxmox" class="project-image modal-img-activable">
+
+                </div>
+                
+                <div class="project-card">
+                    <h3 data-i18n="projects.programming">Programación</h3>
+                    <p data-i18n="projects.programming.description">En este proyecto hay diferentes proyectos, como por ejemplo el que estás visitando.</p>
+                    <p data-i18n="projects.programming.status">También estoy trabajando en una web multi herramienta, para realizar tareas repetitivas a la hora de revisar una red. El proyecto es un proyecto en desarrollo muy temprano.</p>
+                    <a href="https://github.com/dav-tech-work/multiherramienta" target="_blank" class="project-link" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
+                        <span data-i18n="projects.programming.github.multi">Multiherramienta</span>
+                    </a>
+                    <a href="https://github.com/dav-tech-work/portfolio-web" target="_blank" class="project-link" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
+                        <span data-i18n="projects.programming.github.porfolio">Porfolio</span>
+                    </a>
+                    
+                    <a href="https://github.com/dav-tech-work/Proyectos" target="_blank" class="project-link" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
+                        <span data-i18n="projects.programming.github.proyectos">Proyectos Programación</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <p>&copy; 2025 Daniel Arribas Velázquez</p>
+                <img src="/img/dav_logo.png" alt="Logo DAV" class="footer-logo">
+            </div>
+            <div class="footer-right">
+                <a href="https://github.com/dav-tech-work" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/daniel-arribas-velazquez" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <button id="mailBtn" aria-label="Enviar correo">
+                    <i class="fas fa-envelope"></i>
+                </button>
+            </div>
+        </div>
+    </footer>
+    <!-- Modal para mostrar la imagen en grande -->
+    <div id="modal" class="modal" onclick="cerrarModal()">
+        <img id="modal-img" class="modal-content">
+    </div>
+
+
+    <!-- Scripts -->
+    <script type="module" src="/js/main.js"></script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,172 @@
+:root {
+    --bg-code: #1e1e1e;
+    --text-main: rgba(245, 242, 238, 0.815);
+    --bg-details: #42414159;
+    --shadow-small: rgba(0, 0, 0, 0.1);
+    --shadow-medium: rgba(0, 0, 0, 0.3);
+    --shadow-large: rgba(0, 0, 0, 0.5);
+    --code-text: #d4d4d4;
+    --code-bg: #2d2d2d;
+}
+
+[data-theme="dark"] {
+    --bg-code: #2d2d2d;
+    --text-main: rgba(245, 242, 238, 0.95);
+    --bg-details: rgba(45, 45, 45, 0.8);
+    --shadow-small: rgba(0, 0, 0, 0.3);
+    --shadow-medium: rgba(0, 0, 0, 0.5);
+    --shadow-large: rgba(0, 0, 0, 0.7);
+    --code-text: #e0e0e0;
+    --code-bg: #3c3c3c;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+pre {
+    background-color: var(--bg-code);
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    /* max-height: 200px; /* Limitar la altura del código */
+    
+}
+
+h1 {
+    display: block;
+    text-align: center;
+    color: var(--text-main);
+}
+
+summary {
+    color: var(--text-main);
+    font-size: 22px;
+}
+
+.details-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 20px 5%; /* Agregar margen del 5% a los lados */
+    transition: all 0.3s ease-in-out;
+}
+
+details {
+    background: var(--bg-details);
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px var(--shadow-small);
+    padding: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out;
+    overflow: hidden;
+     position: relative; 
+    z-index: 1; 
+}
+
+details:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 12px var(--shadow-medium);
+}
+
+details[open] {
+    width: 100%;
+    height: auto;
+    grid-column: span 4;
+    box-shadow: 0px 10px 20px var(--shadow-large);
+    transform: scale(1.05);
+    z-index: 10; 
+}
+
+summary {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--text-main);
+    outline: none;
+    cursor: pointer;
+}
+
+pre {
+    white-space: pre-wrap;
+    background: var(--code-bg);
+    color: var(--code-text);
+    padding: 10px;
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+.fondo {
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/code.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+@media (max-width: 1000px) {
+    .fondo {
+        background-attachment: scroll;
+    }
+}
+
+code {
+    font-family: "Fira Code", monospace;
+    color: var(--code-text);
+}
+
+/* Theme toggle button styles */
+.theme-toggle {
+    position: fixed;
+    top: 15px;
+    left: 50px;
+    z-index: 3;
+    background: none;
+    border: 2px solid var(--text-main);
+    color: var(--text-main);
+    padding: 5px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* VS Code syntax highlighting colors - unchanged */
+.hljs-keyword { color: #569cd6; }
+.hljs-string { color: #ce9178; }
+.hljs-number { color: #b5cea8; }
+.hljs-comment { color: #6a9955; }
+.hljs-function { color: #dcdcaa; }
+.hljs-title { color: #dcdcaa; }
+.hljs-variable { color: #9cdcfe; }
+.hljs-operator { color: #c586c0; }
+
+.hidden {
+    display: none;
+}
+
+/* Responsive styles */
+@media (max-width: 1000px) {
+    .details-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    details[open] {
+        grid-column: span 1;
+    }
+}

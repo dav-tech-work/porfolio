@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/settings/sistemas/practica_02/css/styles.css">
+    <link rel="stylesheet" href="/settings/css_compartido/botones_idioma_theme_back.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/settings/principal/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/settings/principal/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/settings/principal/img/favicon-16x16.png">
+    <link rel="manifest" href="/settings/principal/img/site.webmanifest">
+    <!-- <script src="/settings/js/web_script.js"></script> -->
+    <script src="/settings/js/back.js"></script>
+    <title>Practica 2</title>
+</head>
+<body>
+<main>
+<header>
+    <h1>Comandos en linux</h1>
+<img src="" alt="">
+</header>
+<nav>
+    <ul>
+        <li><a href="#">Objetivo de la Práctica</a></li>
+        <li><a href="#">Práctica de comandos</a></li>
+        <li><a href="#">Conclusiones</a></li>
+    </ul>
+</nav>
+
+<h2>Objetivo de la Práctica</h2>
+<p>
+  El objetivo de esta práctica es repasar / practicar comandos que se usan en
+  los sistemas operativos linux. Para ello realizaremos los siguientes
+  apartados.
+</p>
+<p><br /></p>
+<ol>
+  <li><p>LISTAR EL DIRECTORIO RAÍZ&nbsp;</p></li>
+</ol>
+<p><br /></p>
+<ol start="2">
+  <li><p>CREAR ESTRUCTURA SIGUIENTE DESDE EL DIRECTORIO /home/usuario.</p></li>
+</ol>
+<p>&nbsp;</p>
+<p><br /></p>
+<ol start="3">
+  <li>
+    <p>
+      CREAR EN /home/usuario UN FICHERO F1 CON LOS DATOS PERSONALES DEL ALUMNO
+      QUE HACE LA PRÁCTICA&nbsp;
+    </p>
+  </li>
+</ol>
+<p><br /></p>
+<ol start="4">
+  <li>
+    <p>
+      MOVER EL FICHERO F1 AL DIRECTORIO DE TRABAJO /home/usuario/practica.&nbsp;
+    </p>
+  </li>
+</ol>
+<p><br /></p>
+<ol start="5">
+  <li><p>COPIAR EL FICHERO F1 EN EL DIRECTORIO DIR11&nbsp;</p></li>
+</ol>
+<p><br /></p>
+<ol start="6">
+  <li>
+    <p>
+      CREAR EL DIRECTORIO COPIA DENTRO DEL DIRECTORIO USUARIO Y COPIAR EN ÉL EL
+      CONTENIDO DE DIR1.&nbsp;
+    </p>
+  </li>
+</ol>
+<p><br /></p>
+<ol start="7">
+  <li>
+    <p>
+      DESDE /home/usuario HAZ UN LINK (I-NODO) DEL FICHERO EN EL DIRECTORIO
+      DIR11 Y DEMUESTRA SU EXISTENCIA.&nbsp;
+    </p>
+  </li>
+</ol>
+<p><br /></p>
+<ol start="8">
+  <li>
+    <p>
+      CREA UNA CARPETA EN /home/usuario QUE SE LLAME ENLACES Y CONTENDRÁ ENLACES
+      A CADA UNO DE LOS ELEMENTOS DE DIR1&nbsp;
+    </p>
+  </li>
+</ol>
+<p><br /><br /><br /><br /></p>
+<ol start="9">
+  <li>
+    <p>
+      EN LA GESTIÓN DE LINUX ES MUY IMPORTANTE VER QUÉ PASA EN EL SISTEMA, IGUAL
+      QUE EN WINDOWS CON EL REGISTRO DE SUCESOS.&nbsp;
+    </p>
+  </li>
+</ol>
+<p>
+  EN LINUX SE LLAMA /var/log/syslog Y SE TRATA DE UN ARCHIVO DONDE SE REGISTRA
+  TODO LO QUE OCURRE EN EL SISTEMA.&nbsp;
+</p>
+<p>
+  DESACTIVA UNA INTERFACE (P.EJ. ETH0 CON ip link set (INTERFACE p.e. enp0s3)
+  down Y LUEGO VUELVE A ACTIVARLA ip link set (INTERFACE p.e. enp0s3) up ),
+  MUESTRA LAS ÚLTIMAS LÍNEAS DEL ARCHIVO /var/log/syslog, QUE NOS INDICARÁ QUE
+  HA HECHO EL SISTEMA
+</p>
+<p><br /></p>
+<ol start="10">
+  <li>
+    <p>
+      ESTUDIA EL COMANDO grep. SIRVE PARA ENCONTRAR OCURRENCIAS EN UN FICHERO. A
+      . CREA UN FICHERO CON EL SIGUIENTE CONTENIDO:&nbsp;
+    </p>
+  </li>
+</ol>
+<p><br /></p>
+<p>
+  Profesores: Alex Castel, Francesc Sanahuja, Alberto Milián, Feliu Castellà,
+  Francesc Perez, Xavier Perez, Jose Alvarez, Juan Sanchez, Jeronimo Sanchez
+</p>
+<p>&nbsp;</p>
+<p>Alumnos: Antonio Perez, Jose Sanchez, Berta Milián, Santiago García&nbsp;</p>
+<p><br /><br /></p>
+<p>
+  A. TRAVÉS DEL COMANDO grep OBTÉN LAS LÍNEAS DEL FICHERO QUE CONTIENEN: LAS
+  PERSONAS CON APELLIDO PEREZ. LAS PERSONAS CON APELLIDO SÁNCHEZ.&nbsp;
+</p>
+<p><br /></p>
+<p>
+  B. CON EL FICHERO LOG.TXT QUE TIENES EN EL CAMPUS, OBTÉN LAS CONEXIONES EN QUE
+  ESTÁ IMPLICADA LA MÁQUINA 192.168.1.11
+</p>
+<p></p>
+<h2>Práctica de comandos:</h2>
+<p>&nbsp;1- LISTAR EL DIRECTORIO RAÍZ&nbsp;</p>
+<p><br /></p>
+<p>Con el comando ls /&nbsp; listamos todo lo que hay en la raiz del sistema</p>
+<p></p>
+<p><br /></p>
+<p>2- CREAR ESTRUCTURA SIGUIENTE DESDE EL DIRECTORIO /home/usuario.&nbsp;</p>
+<p><br /></p>
+<p>
+  Con el comando mkdir se crean carpetas y con el comando tree visualizamos la
+  estructura creada.
+</p>
+<p></p>
+<p><br /></p>
+<p>
+  3- CREAR EN /home/usuario UN FICHERO F1 CON LOS DATOS PERSONALES DEL ALUMNO
+  QUE HACE LA PRÁCTICA&nbsp;
+</p>
+<p><br /></p>
+<p>
+  El comando pwd nos dice donde estamos ubicados, es decir, en que carpeta nos
+  encontramos.
+</p>
+<p></p>
+<p><br /></p>
+<p>
+  El comando nano es un editor de texto en terminal al ejecutarlo podemos abrir
+  un archivo o crearlo de 0. Con el comando touch creamos archivos.
+</p>
+<p></p>
+<p><br /><br /><br /></p>
+<p>Con el comando cat, mostramos en pantalla el contenido de un archivo.</p>
+<p></p>
+<p><br /><br /></p>
+<p>4- MOVER EL FICHERO F1 AL DIRECTORIO DE TRABAJO /home/usuario/practica</p>
+<p><br /></p>
+<p>
+  Usamos el&nbsp; comando mv para mover ficheros desde una ubicación a otra.
+</p>
+<p></p>
+<p>Con tree mostramos la estructura de carpetas</p>
+<p></p>
+<p><br /><br /></p>
+<p>5- COPIAR EL FICHERO F1 EN EL DIRECTORIO DIR11&nbsp;</p>
+<p><br /></p>
+<p>
+  El comando cp sirve para copiar ya sea archivos o carpetas de una ubicación a
+  otra.
+</p>
+<p>El comando ls y la ubicación mostramos el contenido de la carpeta</p>
+
+<p>
+  6- CREAR EL DIRECTORIO COPIA DENTRO DEL DIRECTORIO USUARIO Y COPIAR EN ÉL EL
+  CONTENIDO DE DIR1.&nbsp;
+</p>
+<p><br /></p>
+<p>
+  Con cp -R copiamos la carpeta y el contenido de la misma ya que -R es
+  recursivamente.
+</p>
+
+<p>
+  7- DESDE /home/usuario HAZ UN LINK (I-NODO) DEL FICHERO EN EL DIRECTORIO DIR11
+  Y DEMUESTRA SU EXISTENCIA.
+</p>
+
+<p>ln -s es el comando que se utiliza para crear enlaces / accesos directos</p>
+
+<p>
+  8- CREA UNA CARPETA EN /home/usuario QUE SE LLAME ENLACES Y CONTENDRÁ ENLACES
+  A CADA UNO DE LOS ELEMENTOS DE DIR1&nbsp;
+</p>
+<p><br /></p>
+<p>
+  Con ln -s “/ubicación/origen/archivo”&nbsp; “/ubicación/destino/archivo”&nbsp;
+  ubicamos directamente el enlace en el destino.
+</p>
+<p></p>
+<p><br /><br /></p>
+<p>
+  9- EN LA GESTIÓN DE LINUX ES MUY IMPORTANTE VER QUÉ PASA EN EL SISTEMA, IGUAL
+  QUE EN WINDOWS CON EL REGISTRO DE SUCESOS.&nbsp;
+</p>
+<p>
+  EN LINUX SE LLAMA /var/log/syslog Y SE TRATA DE UN ARCHIVO DONDE SE REGISTRA
+  TODO LO QUE OCURRE EN EL SISTEMA.&nbsp;
+</p>
+<p>
+  DESACTIVA UNA INTERFACE (P.EJ. ETH0 CON ip link set (INTERFACE p.e. enp0s3)
+  down Y LUEGO VUELVE A ACTIVARLA ip link set (INTERFACE p.e. enp0s3) up ),
+  MUESTRA LAS ÚLTIMAS LÍNEAS DEL ARCHIVO /var/log/syslog, QUE NOS INDICARÁ QUE
+  HA HECHO EL SISTEMA
+</p>
+<p><br /></p>
+<p>
+  El comando ip link nos muestra las interfaces del sistema operativo.&nbsp;
+</p>
+<p>
+  Para poder apagar la interfaz de red debemos ejecutar el comando ip link set
+  “nombre interfaz” down. Si somos root podemos ejecutarlo directamente, pero si
+  no debemos poner lo siguiente:
+</p>
+<p>
+  sudo ip link set “nombre interfaz” down -&gt; asi ejecutamos el comando como
+  superusuario.
+</p>
+<p></p>
+<p><br /><br /><br /><br /></p>
+<p>
+  &nbsp;Con cat /var/log/syslog veremos en el terminal lo sucedido en el sistema
+</p>
+<p></p>
+<p><br /><br /></p>
+<p>
+  10- ESTUDIA EL COMANDO grep. SIRVE PARA ENCONTRAR OCURRENCIAS EN UN FICHERO. A
+  . CREA UN FICHERO CON EL SIGUIENTE CONTENIDO:&nbsp;
+</p>
+<p><br /></p>
+<p>
+  Profesores: Alex Castel, Francesc Sanahuja, Alberto Milián, Feliu Castellà,
+  Francesc Perez, Xavier Perez, Jose Alvarez, Juan Sanchez, Jeronimo Sanchez
+</p>
+<p>&nbsp;</p>
+<p>Alumnos: Antonio Perez, Jose Sanchez, Berta Milián, Santiago García&nbsp;</p>
+
+<p>
+  A. TRAVÉS DEL COMANDO grep OBTÉN LAS LÍNEAS DEL FICHERO QUE CONTIENEN: LAS
+  PERSONAS CON APELLIDO PEREZ. LAS PERSONAS CON APELLIDO SÁNCHEZ.&nbsp;
+</p>
+
+<p>
+  El comando grep se utiliza para buscar dentro de un archivo. Siguiendo la
+  siguiente estructura.
+</p>
+
+<p>grep “lo que buscamos”&nbsp; “donde lo buscamos”</p>
+
+<p>
+  B. CON EL FICHERO LOG.TXT QUE TIENES EN EL CAMPUS, OBTÉN LAS CONEXIONES EN QUE
+  ESTÁ IMPLICADA LA MÁQUINA 192.168.1.11
+</p>
+
+<section>
+<h2>Conclusiones</h2>
+<p>
+  Esta práctica nos ayuda a comprender que la terminal de comandos se puede
+  realizar lo mismo que en la interfaz gráfica, aparte de poder realizar de
+  manera más eficiente algunas tareas como crear carpetas o ficheros rápidamente
+  o a la vez. También&nbsp; es una manera de consumir menos recursos del
+  sistema.
+</p>
+</section>
+<p><br /></p>
+</main>
+</body>
+</html>

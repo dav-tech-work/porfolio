@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://daniel-arribas-velazquez.dav-tech.work/</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://daniel-arribas-velazquez.dav-tech.work/pages/proyectos.html</loc>
+  </url>
+  <url>
+    <loc>https://daniel-arribas-velazquez.dav-tech.work/pages/curriculum.html</loc>
+  </url>
+  <url>
+    <loc>https://daniel-arribas-velazquez.dav-tech.work/pages/formacion.html</loc>
+  </url>
+  <url>
+    <loc>https://daniel-arribas-velazquez.dav-tech.work/pages/python/teoria.html</loc>
+  </url>
+  <url>
+    <loc>https://daniel-arribas-velazquez.dav-tech.work/pages/python/practicas.html</loc>
+  </url>
+  <url>
+    <loc>https://daniel-arribas-velazquez.dav-tech.work/pages/javascript/teoria.html</loc>
+  </url>
+  <url>
+    <loc>https://daniel-arribas-velazquez.dav-tech.work/pages/javascript/practicas.html</loc>
+  </url>
+  <url>
+    <loc>https://daniel-arribas-velazquez.dav-tech.work/pages/sistemas/practicas/practica_01_sistemas.html</loc>
+  </url>
+</urlset>

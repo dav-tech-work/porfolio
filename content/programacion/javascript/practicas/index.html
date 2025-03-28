@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Utilizando JS</title>
+    <script src="/settings/js/web_script.js"></script>
+    <style>
+      /* Comentario CSS */
+    </style>
+  </head>
+  <body>
+    <h1>Soy el título de la página</h1>
+
+    <script>
+      // let mensaje = "Hoy es viernes"
+      // console.log(mensaje)
+
+      // alert(mensaje)
+
+      // let respuesta = prompt("¿Cómo te llamas?")
+
+      // let saludo = "Buenos días" + " " + respuesta
+      // alert(saludo)
+
+      // respuesta = confirm("¿Está lloviendo?")
+
+      // if (respuesta) {
+      //     alert("Acuérdate de tomar un paraguas")
+      // } else {
+      //     alert("No necesitas un paraguas")
+      // }
+
+      alert("Calculadora básica");
+
+      //   let miVariable = "Hola";
+      //   miVariable = 7;
+      let operacion = prompt("¿Qué operación quieres realizar: +, -, *, /");
+
+      switch (operacion) {
+        case "+":
+        case "-":
+        case "*":
+        case "/":
+          let num1 = parseFloat(prompt("Dime el primer número"));
+          let num2 = parseFloat(prompt("Dime el segundo número"));
+
+          let respuesta = `${num1} ${operacion} ${num2} = `;
+          let mensaje = "";
+          switch (operacion) {
+            case "+":
+              mensaje = respuesta + (num1 + num2); // 2 + 3 = 5
+              alert(mensaje);
+              // alert(`${num1} + ${num2} = ${num1 + num2}`)
+              break;
+            case "-":
+              mensaje = respuesta + `${num1 - num2}`; // 2 + 3 = 5
+              alert(mensaje);
+              // alert(`${num1} + ${num2} = ${num1 + num2}`)
+              break;
+            case "*":
+              mensaje = respuesta + `${num1 * num2}`; // 2 + 3 = 5
+              alert(mensaje);
+              // alert(`${num1} + ${num2} = ${num1 + num2}`)
+              break;
+            case "/":
+                if (num2 == 0) {
+                    mensaje = respuesta + "infinito"
+                } else {
+                    mensaje = respuesta + `${num1 / num2}`; // 2 + 3 = 5
+                }
+              
+              alert(mensaje);
+              // alert(`${num1} + ${num2} = ${num1 + num2}`)
+              break;
+          }
+          break
+        default:
+          alert("Operación no aceptada");
+      }
+    </script>
+  </body>
+</html>

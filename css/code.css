@@ -1,0 +1,239 @@
+/* CSS Para las paginas de teoría y práctica de Python, HTML y CSS , JavaScript y Node.js, SQL y MongoDB, y React */
+/* Estilos para las páginas de código */
+.code-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    margin-top: calc(var(--header-height) + 2rem);
+}
+
+.page-title {
+    color: var(--text-color);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+#content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+    position: relative;
+}
+
+.code-section {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.code-section h2 {
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+}
+
+.code-section p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.code-block {
+    background: var(--bg-tertiary);
+    border-radius: 6px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    overflow-x: auto;
+}
+
+.code-block pre {
+    margin: 0;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--text-color);
+}
+
+.code-block code {
+    display: block;
+    white-space: pre;
+}
+
+.code-output {
+    background: var(--bg-primary);
+    border-left: 4px solid var(--accent-color);
+    padding: 1rem;
+    margin-top: 1rem;
+    color: var(--text-secondary);
+}
+
+details {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    margin-bottom: 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    position: relative;
+    z-index: 1;
+}
+
+details[open] {
+    position: absolute;
+    width: calc(100% - 2rem);
+    z-index: 10;
+    left: 1rem;
+}
+
+summary {
+    padding: 1rem;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+summary:hover {
+    background: var(--bg-tertiary);
+}
+
+summary::before {
+    content: '►';
+    margin-right: 0.5rem;
+    transition: transform 0.3s ease;
+}
+
+details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+details[open] summary {
+    border-bottom: 1px solid var(--border-color);
+}
+
+pre {
+    margin: 0;
+    padding: 1.5rem;
+    border-radius: 4px;
+    background: #1e1e1e !important;
+    overflow-x: auto;
+}
+
+code {
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    tab-size: 4;
+}
+
+/* VS Code Dark Modern Theme */
+.hljs {
+    background: #1e1e1e !important;
+    color: #d4d4d4 !important;
+}
+
+/* Strings (orange) */
+.hljs-string {
+    color: #ce9178 !important;
+}
+
+/* Numbers (light blue) */
+.hljs-number {
+    color: #9cdcfe !important;
+}
+
+/* Comments (green) */
+.hljs-comment {
+    color: #6a9955 !important;
+    font-style: italic;
+}
+
+/* Functions and methods (yellow) */
+.hljs-title.function_,
+.hljs-function .hljs-title {
+    color: #dcdcaa !important;
+}
+
+/* Keywords (purple) */
+.hljs-keyword {
+    color: #c586c0 !important;
+}
+
+/* Built-in functions (cyan) */
+.hljs-built_in,
+.hljs-name {
+    color: #4ec9b0 !important;
+}
+
+/* Constants and booleans (blue) */
+.hljs-literal,
+.hljs-boolean {
+    color: #569cd6 !important;
+}
+
+/* Variables and parameters (light blue) */
+.hljs-variable,
+.hljs-params,
+.hljs-property {
+    color: #9cdcfe !important;
+}
+
+/* Operators and punctuation (white) */
+.hljs-operator,
+.hljs-punctuation {
+    color: #d4d4d4 !important;
+}
+
+/* Function calls */
+.hljs-title.function_.invoked {
+    color: #dcdcaa !important;
+}
+
+/* Class names and types */
+.hljs-title.class_,
+.hljs-type {
+    color: #4ec9b0 !important;
+}
+
+/* Triple quotes for docstrings */
+.hljs-meta {
+    color: #ce9178 !important;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+    #content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    #content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    #content {
+        grid-template-columns: 1fr;
+    }
+    
+    .code-container {
+        padding: 1rem;
+    }
+
+    summary {
+        padding: 0.75rem;
+    }
+
+    pre {
+        padding: 1rem;
+    }
+}

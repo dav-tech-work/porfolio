@@ -1,0 +1,664 @@
+/* Estilos para la página de formación */
+.education-section {
+    padding: 2rem 0;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.education-section h1 {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.education-timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+.education-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: var(--accent-color);
+}
+
+.education-item {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 3rem;
+}
+
+.education-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    border: 2px solid var(--bg-primary);
+}
+
+.education-date {
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.education-content {
+    background-color: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.education-content h3 {
+    font-size: 2.25rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.education-institution {
+    color: var(--text-secondary);
+    font-style: italic;
+    margin-bottom: 1rem;
+}
+
+.education-details {
+    list-style-type: none;
+    padding: 0;
+}
+
+.education-details li {
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.education-details li::before {
+    content: '•';
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+}
+
+/* Sección de certificaciones */
+.certifications-section {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.certifications-section h2 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+}
+
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 var(--content-padding);
+}
+
+/* Formación Hero Section */
+.formacion-hero-section {
+    text-align: center;
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+    margin-top: 2.50rem;
+}
+
+.formacion-title {
+    font-size: 2.5rem;
+    /* margin-bottom: 1rem; */
+    /* margin-top: 3.75rem; */
+    color: var(--text-color);
+}
+
+.formacion-description {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+}
+
+/* Formación Section */
+.formacion-section {
+    padding: 2rem 0;
+}
+
+.formacion-category {
+    margin-bottom: 3rem;
+}
+
+.category-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+}
+
+.category-description {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 0.5rem;
+}
+
+/* Topic Sections */
+.topic-section {
+    margin: 2rem 0;
+    padding: 0 1rem;
+}
+
+.topic-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.topic-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.topic-item {
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.topic-item:hover {
+    background: var(--bg-tertiary);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.topic-item h4 {
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+    color: var(--text-color);
+}
+
+.topic-item p {
+    margin: 0 0 1.5rem 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.topic-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: var(--accent-color);
+    color: var(--text-on-accent);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.topic-link:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+/* Contenedor principal */
+.education-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Título de la página */
+.page-title {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Descripción */
+.page-description {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+/* Grid de cursos */
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Tarjeta de curso */
+.course-card {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.course-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.course-content {
+    padding: 1.5rem;
+}
+
+.course-title {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.course-description {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+/* Etiquetas de tecnología */
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.tech-tag {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tech-tag:hover {
+    background: var(--accent);
+    color: var(--text-on-accent);
+}
+
+/* Grid de habilidades */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-card {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.skill-title {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-list li {
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.skill-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Language Control */
+[data-lang] {
+    display: none;
+}
+
+[data-lang].active {
+    display: block;
+}
+
+/* Para elementos inline como los enlaces */
+[data-lang].active-inline {
+    display: inline-block;
+}
+
+/* Language Buttons */
+.language-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: 1rem;
+}
+
+.language-switch {
+    background: none;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.language-switch:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--text-on-accent);
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .education-section {
+        padding: 1rem var(--content-padding);
+    }
+
+    .education-section h1 {
+        font-size: 2rem;
+    }
+
+    .education-timeline::before {
+        left: 1rem;
+    }
+
+    .education-item {
+        padding-left: 3rem;
+    }
+
+    .education-item::before {
+        left: calc(1rem - 6px);
+    }
+
+    .education-content {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .topic-content {
+        grid-template-columns: 1fr;
+    }
+
+    .topic-section {
+        padding: 0;
+    }
+
+    .formacion-title {
+        font-size: 2rem;
+    }
+
+    .category-title {
+        font-size: 1.75rem;
+    }
+
+    .education-container {
+        padding: 1rem;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Dark Mode Colors */
+[data-bs-theme="dark"] {
+    --card-bg: var(--bg-secondary);
+    --hover-color: var(--bg-tertiary);
+    --accent-hover: var(--accent-dark);
+}
+
+/* Estilos para la sección de formación */
+.formacion-container {
+    padding-top: 80px; /* Espacio para la barra de navegación */
+}
+
+/* Título principal */
+.formacion-title {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Sección de temas */
+.topic-section {
+    padding: 2rem 0;
+}
+
+.category-title {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.topic-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+}
+
+/* Tarjetas de tema */
+.topic-card {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.topic-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.topic-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.topic-details {
+    padding: 1.5rem;
+}
+
+.topic-title {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+}
+
+.topic-description {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+/* Etiquetas de tecnología */
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.tech-tag {
+    background: var(--bg-accent);
+    color: var(--text-primary);
+    padding: 0.35rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+    background: var(--accent-color);
+    color: var(--text-on-accent);
+}
+
+/* Botones y enlaces */
+.topic-actions {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.topic-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.topic-button.primary {
+    background: var(--accent-color);
+    color: var(--text-on-accent);
+}
+
+.topic-button.primary:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+.topic-button.secondary {
+    background: var(--bg-accent);
+    color: var(--text-primary);
+}
+
+.topic-button.secondary:hover {
+    background: var(--hover-color);
+    transform: translateY(-2px);
+}
+
+/* Language Control */
+[data-lang] {
+    display: none;
+}
+
+[data-lang].active {
+    display: block;
+}
+
+/* Para elementos inline como los enlaces */
+[data-lang].active-inline {
+    display: inline-block;
+}
+
+/* Language Buttons */
+.language-buttons {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: 1rem;
+}
+
+.language-switch {
+    background: none;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.language-switch:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: var(--text-on-accent);
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .education-section {
+        padding: 1rem var(--content-padding);
+    }
+
+    .education-section h1 {
+        font-size: 2rem;
+    }
+
+    .education-timeline::before {
+        left: 1rem;
+    }
+
+    .education-item {
+        padding-left: 3rem;
+    }
+
+    .education-item::before {
+        left: calc(1rem - 6px);
+    }
+
+    .education-content {
+        padding: 1rem;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .topic-content {
+        grid-template-columns: 1fr;
+    }
+
+    .topic-section {
+        padding: 0;
+    }
+
+    .formacion-title {
+        font-size: 2rem;
+    }
+
+    .category-title {
+        font-size: 1.75rem;
+    }
+}
+
+/* Dark Mode Colors */
+[data-bs-theme="dark"] {
+    --card-bg: var(--bg-secondary);
+    --hover-color: var(--bg-tertiary);
+    --accent-hover: var(--accent-dark);
+}
