@@ -99,6 +99,6 @@ Este proyecto está bajo la licencia MIT.
 
 ## 💬 Contacto
 
-📧 [danielarribasvelazquez@gmail.com](mailto:danielarribasvelazquez@dav-tech.work)  
+📧 [danielarribasvelazquez@dav-tech.work](mailto:danielarribasvelazquez@dav-tech.work)  
 🔗 [LinkedIn](https://linkedin.com/in/daniel-arribas-velazquez)  
 🐱 [GitHub](https://github.com/dav-tech-work)
