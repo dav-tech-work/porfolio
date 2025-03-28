@@ -30,13 +30,8 @@ Este es mi sitio web personal, desarrollado como una **Single Page Application (
 │   ├── colores.css
 │   ├── [nombre].css
 ├── js/
-│   ├── rutas.js
-│   ├── seguridad.js
-│   ├── personalizacion.js
-│   ├── mail.js
-│   ├── navegacion.js
-│   ├── muestra_contenido.js
-│   └── busqueda.js
+│   ├── main.js
+
 ```
 
 ---
@@ -104,6 +99,6 @@ Este proyecto está bajo la licencia MIT.
 
 ## 💬 Contacto
 
-📧 [danielarribasvelazquez@gmail.com](mailto:danielarribasvelazquez@gmail.com)  
+📧 [danielarribasvelazquez@gmail.com](mailto:danielarribasvelazquez@dav-tech.work)  
 🔗 [LinkedIn](https://linkedin.com/in/daniel-arribas-velazquez)  
 🐱 [GitHub](https://github.com/dav-tech-work)
