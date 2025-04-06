@@ -1,0 +1,65 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Fondo estático de color liso */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+main {
+    width: 90%;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+/* Contenedor de details */
+.details-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    gap: 15px;
+    margin-top: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Estilos de los details (cápsulas) */
+details {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, width 0.3s ease-in-out, height 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+/* Código dentro de las cápsulas */
+pre {
+    white-space: pre-wrap;
+    background: #272822; /* Fondo oscuro para código */
+    color: #f8f8f2;
+    padding: 10px;
+    border-radius: 10px;
+    overflow-x: auto;
+}
+
+/* Estilos personalizados para resaltar código */
+code {
+    font-family: "Fira Code", monospace;
+    color: #d4d4d4; /* Color base del texto */
+}
+
+.hljs-keyword { color: #569cd6; }   /* Palabras clave */
+.hljs-string { color: #ce9178; }    /* Cadenas de texto */
+.hljs-number { color: #b5cea8; }    /* Números */
+.hljs-comment, .hljs-docstring {
+    color: #6a9955 !important; /* Verde para comentarios */
+    font-style: italic;
+}
+.hljs-function { color: #dcdcaa; }  /* Funciones */
+.hljs-title { color: #dcdcaa; }     /* Títulos de funciones */
+.hljs-variable { color: #9cdcfe; }  /* Variables */
+.hljs-operator { color: #c586c0; }  /* Operadores */

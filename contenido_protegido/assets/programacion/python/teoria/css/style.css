@@ -1,0 +1,285 @@
+/* Variables de CSS */
+:root {
+    --bg-code: #2d2d2d;
+    --bg-details: rgba(45, 45, 45, 0.9);
+    --shadow-small: rgba(0, 0, 0, 0.2);
+    --shadow-medium: rgba(0, 0, 0, 0.4);
+    --shadow-large: rgba(0, 0, 0, 0.6);
+    --text-main: #f5f5f5;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+pre {
+    background-color: var(--bg-code);
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+}
+
+code {
+    font-family: "Fira Code", monospace;
+}
+
+.fondo {
+    background-image: url('/settings/programacion/python/img/python.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+@media (max-width: 1000px) {
+    .fondo {
+        background-attachment: scroll;
+        background-size: cover; /* Asegura que el fondo cubra toda el área */
+        background-position: center; /* Centra el fondo */
+    }
+}
+
+.details-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20vw, 1fr));
+    gap: 15px;
+    margin: 20px 5%;
+}
+
+details {
+    position: relative;
+    z-index: 1;
+    background-color: var(--bg-details);
+    border-radius: 5px;
+    box-shadow: 0px 2px 5px var(--shadow-small);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+details:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 10px var(--shadow-medium);
+}
+
+details[open] {
+    position: absolute; /* para que quede encima */
+    left: 50%;
+    transform: translateX(-50%); /* Centrado */
+    width: 90%; /* ancho deseado al abrir */
+    max-width: 1200px;
+    z-index: 10;
+    box-shadow: 0px 5px 15px var(--shadow-large);
+}
+
+summary {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: var(--text-main);
+    outline: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.theme-toggle {
+    position: absolute; /* Posición absoluta dentro de su contenedor */
+    top: 15px; /* Coloca el icono a 15px del borde superior */
+    left: 50px; /* Coloca el icono a 50px del borde izquierdo */
+    border: 1px solid var(--text-main);
+    color: var(--text-main);
+    padding: 5px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.hidden {
+    display: none;
+}
+
+:root {
+    --bg-code: #2d2d2d;
+    --text-main: #ffffff;
+}
+
+[data-theme="light"] {
+    --bg-code: #f5f5f5;
+    --text-main: #333;
+    --bg-details: rgba(255, 255, 255, 0.8);
+}
+
+@media (max-width: 768px) {
+    .details-container {
+        grid-template-columns: 1fr;
+        margin: 15px;
+    }
+}
+
+/* Código resaltado */
+.hljs-comment,
+.hljs-quote {
+    color: #6a9955;
+}
+.hljs-variable,
+.hljs-template-variable,
+.hljs-attribute,
+.hljs-tag,
+.hljs-regexp,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-pseudo,
+.hljs-selector-tag {
+    color: #d7ba7d;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-type,
+.hljs-params {
+    color: #b5cea8;
+}
+
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet {
+    color: #ce9178;
+}
+
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-section,
+.hljs-keyword,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-selector-attr {
+    color: #569cd6;
+}
+
+.hljs-attribute,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class {
+    color: #9cdcfe;
+}
+
+.hljs-string,
+.hljs-meta,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-regexp {
+    color: #ce9178;
+}
+
+.hljs-title,
+.hljs-section {
+    color: #4ec9b0;
+}
+
+.hljs-keyword,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-meta,
+.hljs-deletion {
+    color: #c586c0;
+}
+
+.hljs-addition {
+    color: #6a9955;
+}
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-strong {
+    font-weight: bold;
+}
+
+header {
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center;
+    padding: 10px 5%;
+    background-color: var(--bg-details);
+    box-shadow: 0px 2px 5px var(--shadow-small);
+}
+
+header h1 {
+    display: block;
+    text-align: center;
+    color: var(--text-main);
+}
+
+.icon-container {
+    display: flex;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center;
+    margin-top: 10px;
+}
+
+@media (max-width: 1000px) {
+    header {
+        flex-direction: column; /* Cambia la dirección del flex a columna */
+        align-items: center; /* Centra los elementos horizontalmente */
+    }
+
+    .icon-container {
+        flex-direction: row; /* Asegura que los elementos se muestren uno al lado del otro */
+        justify-content: center; /* Centra los elementos horizontalmente */
+        margin-top: 10px; /* Añade un margen superior */
+    }
+
+    .theme-toggle,
+    #language-container {
+        position: static; /* Elimina la posición absoluta */
+        margin: 0 10px; /* Añade un margen horizontal */
+    }
+}
+
+.container {
+    flex: 1;
+}
+
+footer {
+    text-align: center;
+    margin-top: auto;
+    padding: 10px;
+    background-color: var(--bg-details); /* Ajusta el color de fondo según tu diseño */
+    color: var(--text-main); /* Ajusta el color del texto según tu diseño */
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: auto;
+    padding: 10px;
+    /* Ajusta el color del texto según tu diseño */
+    width: 100%;
+    /* Añade una sombra superior para destacar el footer */
+}

@@ -1,0 +1,66 @@
+<main class="container" role="main" aria-labelledby="proyectos-titulo">
+  <section class="projects-section" data-searchable aria-label="Introducción a los proyectos">
+    <h2 id="proyectos-titulo"><%= t["projects.title"] %></h2>
+    <p><%= t["projects.description"] %></p>
+  </section>
+
+  <section class="projects-section" data-searchable aria-label="Lista de proyectos">
+    <div class="projects-grid">
+
+      <!-- Proyecto: Sistemas -->
+      <div class="project-card">
+        <h3><%= t["projects.system"] %></h3>
+        <div class="project-content">
+          <div class="project-text">
+            <p><%= t["projects.system.description"] %></p>
+            <p><%= t["projects.system.status"] %></p>
+          </div>
+          <div class="project-image-container">
+            <figure>
+              <img
+                src="/assets/img/proxmox.png"
+                alt="Proxmox"
+                class="project-image modal-img-activable"
+                width="1915"
+                height="803"
+              />
+              <figcaption><%- t["projects.system.figcaption"] %></figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+
+      <!-- Proyecto: Programación -->
+      <div class="project-card">
+        <h3><%= t["projects.programming"] %></h3>
+        <p><%= t["projects.programming.description"] %></p>
+        <p><%= t["projects.programming.status"] %></p>
+
+        <a href="https://github.com/dav-tech-work/multiherramienta" target="_blank" class="project-link" rel="noopener noreferrer" aria-label="Repositorio MultiHerramienta en GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i>
+          <span><%= t["projects.programming.github.multi"] %></span>
+        </a>
+
+        <a href="https://github.com/dav-tech-work/porfolio" target="_blank" class="project-link" rel="noopener noreferrer" aria-label="Repositorio Porfolio en GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i>
+          <span><%= t["projects.programming.github.porfolio"] %></span>
+        </a>
+
+        <a href="https://github.com/dav-tech-work/Proyectos" target="_blank" class="project-link" rel="noopener noreferrer" aria-label="Repositorio Proyectos en GitHub">
+          <i class="fab fa-github" aria-hidden="true"></i>
+          <span><%= t["projects.programming.github.proyectos"] %></span>
+        </a>
+
+        <a href="https://app-tiempo.dav-tech.work/" target="_blank" class="project-link" rel="noopener noreferrer" aria-label="Aplicación del tiempo desarrollada">
+          <i class="fa-regular fa-sun" aria-hidden="true"></i>
+          <span><%= t["projects.programming.app-tiempo"] %></span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+  <div id="modal" class="modal" onclick="cerrarModal()">
+    <img id="modal-img" class="modal-content">
+</div>
+
+</main>

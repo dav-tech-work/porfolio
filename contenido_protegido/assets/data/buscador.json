@@ -1,0 +1,32 @@
+[
+  {
+    "titulo": "404",
+    "slug": "404",
+    "ruta": "/pagina/404"
+  },
+  {
+    "titulo": "🚧 Sitio en construcción 🚧",
+    "slug": "construccion",
+    "ruta": "/pagina/construccion"
+  },
+  {
+    "titulo": "Daniel Arribas Velázquez",
+    "slug": "curriculum",
+    "ruta": "/pagina/curriculum"
+  },
+  {
+    "titulo": "Formación",
+    "slug": "formacion",
+    "ruta": "/pagina/formacion"
+  },
+  {
+    "titulo": "Daniel Arribas Velázquez",
+    "slug": "index",
+    "ruta": "/"
+  },
+  {
+    "titulo": "Proyectos",
+    "slug": "proyectos",
+    "ruta": "/pagina/proyectos"
+  }
+]

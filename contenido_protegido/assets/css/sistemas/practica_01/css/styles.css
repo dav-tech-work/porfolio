@@ -1,0 +1,77 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+.container {
+    flex: 1;
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    display: block;
+    color:whitesmoke;
+    text-align:left;
+} 
+h2 {
+    color: #333;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+li {
+    background: #ddd;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+.ventaja {
+    background: #d4edda;
+    color: #155724;
+}
+.desventaja {
+    background: #f8d7da;
+    color: #721c24;
+}
+.fondo {
+    width: 100%;/* Ancho completo de la pantalla */
+    height:100%;/* Alto completo de la pantalla */
+    background-image: url('../img/fondo2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    
+}
+.contenido {
+    position: relative; /* Permite que el contenido se desplace */
+    z-index: 1; /* Asegura que esté por encima del fondo */
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); /* Opcional: Fondo semi-transparente */
+}
+footer {
+    text-align: center;
+    margin-top: auto;
+    padding: 10px;
+    background-color: var(--bg-details); /* Ajusta el color de fondo según tu diseño */
+    color: var(--text-main); /* Ajusta el color del texto según tu diseño */
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: auto;
+    padding: 10px;
+    /* Ajusta el color del texto según tu diseño */
+    width: 100%;
+    /* Añade una sombra superior para destacar el footer */
+}

@@ -1,0 +1,116 @@
+<main class="container" role="main" aria-labelledby="cv-title">
+  <div id="content">
+
+    <!-- CABECERA -->
+    <section class="cv-header" aria-label="Encabezado del currículum" data-searchable>
+      <h1 id="cv-title" class="cv-title">Daniel Arribas Velázquez</h1>
+      <h2 class="cv-subtitle"><%= t["cv.subtitle"] %></h2>
+      <div class="contact-info">
+        <p>
+          <i class="fas fa-envelope" aria-hidden="true"></i> <span id="email"></span>
+          <a href="https://www.linkedin.com/in/daniel-arribas-velazquez/" target="_blank" rel="noopener noreferrer" aria-label="Perfil de LinkedIn">
+            | <i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn
+          </a>
+        </p>
+        <p>
+          <i class="fas fa-map-marker-alt" aria-hidden="true"></i> <span><%= t["cv.contact.location"] %></span>
+        </p>
+      </div>
+    </section>
+
+    <!-- PERFIL -->
+    <section class="cv-section profile" aria-label="Perfil profesional" data-searchable>
+      <h2><%= t["cv.profile.title"] %></h2>
+      <p><%- t["cv.profile.description"] %></p>
+    </section>
+
+    <!-- EXPERIENCIA -->
+    <section class="cv-section experience" aria-label="Experiencia laboral" data-searchable>
+      <div class="experience-content">
+        <h2><%= t["cv.experience.title"] %></h2>
+        <article class="experience-item">
+          <h3><%= t["cv.experience.role"] %></h3>
+          <p class="experience-date"><%= t["cv.experience.date"] %></p>
+          <ul class="experience-duties">
+          <% for (let i = 1; i <= 6; i++) { %>
+            <li><%= t[`cv.experience.duties.${i}`] %></li>
+          <% } %>
+        </ul>
+        </article>
+        <article>
+          <ul class="technologies">
+            <% [
+              "Windows Server", "Proxmox", "Docker", "VMware", "Hyper-V",
+              "Scripting", "Sonicwall", "Veeam", "Acronis", "Nmap",
+            "Metasploit", "Python", "SQL", "HTML", "CSS", "JavaScript"
+          ].forEach(tech => { %>
+            <li class="technology-tag"><%= tech %></li>
+          <% }) %>
+          </ul>
+        </article>
+      </div>
+    <!-- EDUCACIÓN -->
+      <div class="cv-section education" aria-label="Formación académica" data-searchable>
+        <div class="education-content">
+          <h2><%= t["cv.education.title"] %></h2>
+          <% ["programming", "security", "systems", "forestry"].forEach(area => { %>
+            <article class="education-item">
+              <h3><%= t[`cv.education.${area}.title`] %></h3>
+              <p><%= t[`cv.education.${area}.school`] %></p>
+              <p><%= t[`cv.education.${area}.description`] %></p>
+            </article>
+          <% }) %>
+        </div>
+      </div>
+    </section>
+    <!-- CERTIFICACIONES Y IDIOMAS -->
+    <section class="cv-section" aria-label="Certificaciones e idiomas">
+      <div class="certifications" data-searchable>
+        <h2><%= t["cv.certifications.title"] %></h2>
+        <div class="language-grid">
+          <ul class="skill-item mia">
+            <li><%= t["cv.certifications.1"] %></li>
+            <li><%= t["cv.certifications.2"] %></li>
+            <li><%= t["cv.certifications.3"] %></li>
+          </ul>
+        </div>
+      </div>
+      <div class="languages" data-searchable>
+        <h2><%= t["cv.languages.title"] %></h2>
+        <div class="language-grid"> 
+          <ul class="mia skill-item">
+            <li><%= t["cv.languages.spanish"] %></li>
+            <li><%= t["cv.languages.catalan"] %></li>
+            <li><%= t["cv.languages.english"] %></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- HABILIDADES -->
+    <section class="cv-section skills" aria-label="Habilidades profesionales" data-searchable>
+      <h2><%= t["cv.skills.title"] %></h2>
+      <ul class="skills-list mia ">
+        <li class="skill-item"><%= t["cv.skills.selftaught"] %></li>
+        <li class="skill-item">Resolución de problemas</li>
+        <li class="skill-item">Trabajo en equipo</li>
+        <li class="skill-item">Comunicación efectiva</li>
+        <li class="skill-item">Gestión de proyectos</li>
+        <li class="skill-item">Adaptabilidad</li>
+        <li class="skill-item">Pensamiento analítico</li>
+        <li class="skill-item">Atención al detalle</li>
+        
+      </ul>
+      <ul class="technologies">
+        <% [
+          "Windows Server", "Proxmox", "Docker", "VMware", "Hyper-V",
+          "Scripting", "Sonicwall", "Veeam", "Acronis", "Nmap",
+        "Metasploit", "Python", "SQL", "HTML", "CSS", "JavaScript"
+      ].forEach(tech => { %>
+        <li class="skill-item"><%= tech %></li>
+      <% }) %>
+      </ul>
+    </section>
+
+  </div>
+</main>

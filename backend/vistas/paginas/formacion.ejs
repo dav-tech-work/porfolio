@@ -1,0 +1,76 @@
+<main class="container" role="main" aria-labelledby="titulo-formacion">
+  <div id="content">
+    <section class="formacion-hero-section" aria-label="Sección de cabecera de formación">
+      <h1 id="titulo-formacion" class="formacion-title"><%= t["education.title"] %></h1>
+    </section>
+
+    <section class="formacion-section">
+      <!-- Categoría: Python -->
+      <div class="formacion-category" aria-label="Formación en Python">
+        <p class="category-description"><%- t["education.description"] %></p>
+
+        <div class="topic-section">
+          <h3 class="topic-title"><%= t["education.python.title"] %></h3>
+          <div class="topic-content">
+            <div class="topic-item">
+              <h4><%= t["education.python.basics.title"] %></h4>
+              <p><%- t["education.python.basics.description"] %></p>
+              <a href="/formacion/python/teoria" class="topic-link"><%= t["education.theory"] %></a>
+            </div>
+            <div class="topic-item">
+              <h4><%= t["education.python.practices.title"] %></h4>
+              <p><%= t["education.python.practices.description"] %></p>
+              <a href="/formacion/python/practicas" class="topic-link"><%= t["education.practices"] %></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categoría: Web -->
+      <div class="formacion-category" aria-label="Formación en desarrollo web">
+        <div class="topic-section">
+          <h3 class="topic-title"><%= t["education.web.title"] %></h3>
+          <div class="topic-content">
+            <div class="topic-item">
+              <h4><%= t["education.web.html.title"] %></h4>
+              <p><%= t["education.web.html.description"] %></p>
+              <a href="/formacion/html/teoria" class="topic-link"><%= t["education.theory"] %></a>
+            </div>
+            <div class="topic-item">
+              <h4><%= t["education.web.html.practices.title"] %></h4>
+              <p><%= t["education.web.html.practices.description"] %></p>
+              <a href="/formacion/html/practicas" class="topic-link"><%= t["education.practices"] %></a>
+            </div>
+            <div class="topic-item">
+              <h4><%= t["education.web.js.title"] %></h4>
+              <p><%= t["education.web.js.description"] %></p>
+              <a href="/formacion/javascript/teoria" class="topic-link"><%= t["education.theory"] %></a>
+            </div>
+            <div class="topic-item">
+              <h4><%= t["education.web.js.practices.title"] %></h4>
+              <p><%= t["education.web.js.practices.description"] %></p>
+              <a href="/formacion/javascript/practicas" class="topic-link"><%= t["education.practices"] %></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Categoría: Sistemas -->
+      <div class="formacion-category" aria-label="Formación en sistemas">
+        <div class="topic-section">
+          <h3 class="topic-title"><%= t["education.systems.title"] %></h3>
+          <div class="topic-content">
+            <div class="topic-item">
+              <h4><%= t["education.systems.practice1.title"] %></h4>
+              <p><%= t["education.systems.practice1.description"] %></p>
+              <a href="/formacion/sistemas/practicas/practica_01_sistemas" class="topic-link">
+                <%= t["education.practice.01"] %>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</main>

@@ -1,0 +1,50 @@
+const express = require("express");
+const router = express.Router();
+const { generarTokenCSRF, validarTokenCSRF } = require("../middlewares/csrf");
+
+// GET: Mostrar formulario con token CSRF
+router.get("/test-csrf", generarTokenCSRF, (req, res) => {
+  const token = res.locals.csrfToken;
+
+  res.setHeader("Content-Type", "text/html; charset=utf-8");
+  res.send(`
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+      <meta charset="UTF-8">
+      <title>Prueba CSRF</title>
+    </head>
+    <body>
+      <h2>🔐 Prueba de Protección CSRF</h2>
+      <form action="/test-csrf" method="POST">
+        <input type="hidden" name="csrf" value="${token}" />
+        <input type="text" name="dato" placeholder="Escribe algo" required />
+        <button type="submit">Enviar</button>
+      </form>
+      <p>⚠️ Si alteras el token con el inspector o haces un POST manual sin él, será rechazado.</p>
+    </body>
+    </html>
+  `);
+});
+
+// POST: Validar token y mostrar resultado
+router.post("/test-csrf", validarTokenCSRF, (req, res) => {
+  const dato = req.body.dato;
+  if (!dato) {
+    return res.status(400).send("❌ Falta el dato en el formulario.");
+  }
+
+  res.send(`
+    <!DOCTYPE html>
+    <html lang="es">
+    <head><meta charset="UTF-8"><title>CSRF OK</title></head>
+    <body>
+      <h2>✅ Protección CSRF validada correctamente</h2>
+      <p>Has enviado: <strong>${dato}</strong></p>
+      <a href="/test-csrf">⬅️ Volver al formulario</a>
+    </body>
+    </html>
+  `);
+});
+
+module.exports = router;

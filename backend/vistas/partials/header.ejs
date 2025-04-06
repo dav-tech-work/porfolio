@@ -1,0 +1,77 @@
+<header>
+  <nav role="navigation" aria-label="Navegación principal">
+    <div class="nav-container">
+
+      <div class="nav-left">
+        <!-- Logo accesible -->
+        <a href="/" class="logo-link" aria-label="Inicio">
+          <img src="/assets/img/dav_logo.png" alt="Logo DAV" class="logo-img" />
+        </a>
+
+        <!-- Botón de menú para móviles -->
+        <button class="menu-toggle" aria-label="Abrir o cerrar el menú de navegación">
+          <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <!-- Menú principal -->
+        <ul class="menu-items">
+          <li>
+            <a href="/" data-i18n="nav.home">
+              <%= t['nav.home'] || 'Inicio' %>
+            </a>
+          </li>
+          <li>
+            <a href="/proyectos" data-i18n="nav.projects">
+              <%= t['nav.projects'] || 'Proyectos' %>
+            </a>
+          </li>
+          <li>
+            <a href="/curriculum" data-i18n="nav.cv">
+              <%= t['nav.cv'] || 'Currículum' %>
+            </a>
+          </li>
+          <li>
+            <a href="/formacion" data-i18n="nav.education">
+              <%= t['nav.education'] || 'Formación' %>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-right">
+        <!-- Búsqueda -->
+        <div class="search-container">
+          <button class="search-toggle" aria-label="Abrir campo de búsqueda">
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
+          <div class="search-dropdown" role="search">
+            <!-- Campo de entrada con ID esperado por search.js -->
+            <input type="text" id="searchInput" placeholder="Buscar..." aria-label="Campo de búsqueda" />
+            
+            <button class="close-search" aria-label="Cerrar búsqueda">
+              <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+        
+            <!-- Resultados con ID esperado por search.js -->
+            <div class="search-results" id="searchResults" aria-live="polite"></div>
+          </div>
+        </div>
+        
+
+        <!-- Cambiar tema -->
+        <button class="theme-toggle" aria-label="Cambiar tema (oscuro o claro)">
+          <i class="fas fa-moon" aria-hidden="true"></i>
+        </button>
+
+        <!-- Selector de idioma -->
+        <label for="languageSelect" class="sr-only">Seleccionar idioma</label>
+        <select id="languageSelect" aria-label="Idioma">
+          <option value="es" <%= idioma === 'es' ? 'selected' : '' %>>ES</option>
+          <option value="en" <%= idioma === 'en' ? 'selected' : '' %>>EN</option>
+          <option value="cat" <%= idioma === 'cat' ? 'selected' : '' %>>CAT</option>
+        </select>
+      </div>
+
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,421 @@
+/* Variables CSS */
+:root {
+    --header-height: 60px;
+    --nav-height: 60px;
+    --footer-height: 60px;
+    --border-radius: 15px;
+    --mobile-width: 500px;
+    --tablet-width: 1000px;
+    --desktop-width: 1500px;
+    --content-padding: 2rem;
+    --content-padding-xxl: 3rem;
+    --content-padding-xl: 2.5rem;
+    --content-padding-l: 1.75rem;
+    --content-padding-m: 1.5rem;
+    --content-padding-s: 1rem;
+    --content-padding-xs: 0.5rem;
+    --content-padding-xss: 0.25rem;
+    --content-padding-xxs: 0.125rem;
+    --min-side-padding: 1rem;
+    --font-primary: Arial, sans-serif;
+    --font-size-base: 1rem;
+    --line-height-base: 1.5;
+    --bg-color: #f0f0f0;
+    --hover-color: #ccc;
+    --text-primary: #333;
+    --accent-color: #666;
+    --bg-secondary: #fff;
+    --bg-accent: #f5f5f5;
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+}
+
+/* Contenedor principal */
+.container {
+    width: min(100% - calc(var(--min-side-padding) * 2), var(--desktop-width));
+    margin: 0 auto;
+    padding: 0 var(--content-padding);
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+/* Navegación */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--nav-height);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+}
+
+nav > div {
+    width: min(100% - calc(var(--min-side-padding) * 2), var(--desktop-width));
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--content-padding);
+}
+
+.nav-left, .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Menú principal */
+.menu-items {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.menu-items a {
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-right: 1rem;
+}
+
+.menu-toggle:hover {
+    color: var(--accent-color);
+}
+
+.menu-items {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--bg-secondary);
+    width: 200px;
+    padding: 1rem 0;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.menu-items.active {
+    display: block;
+}
+
+.menu-items li {
+    list-style: none;
+}
+
+.menu-items a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.menu-items a:hover {
+    background-color: var(--bg-accent);
+    color: var(--text-primary);
+}
+
+/* Estilos del menú en pantallas más grandes */
+@media (min-width: 768px) {
+    .menu-toggle {
+        display: none;
+    }
+
+    .menu-items {
+        display: flex;
+        position: static;
+        width: auto;
+        background: none;
+        padding: 0;
+        box-shadow: none;
+    }
+
+    .menu-items li {
+        margin-right: 1.5rem;
+    }
+
+    .menu-items li:last-child {
+        margin-right: 0;
+    }
+
+    .menu-items a {
+        padding: 0.5rem;
+    }
+
+    .menu-items a:hover {
+        background: none;
+        color: var(--accent-color);
+    }
+}
+
+/* Main content */
+main {
+    flex: 1;
+    margin-top: var(--nav-height);
+    padding-top: var(--content-padding-xxs);
+}
+
+/* Footer */
+footer {
+    min-height: var(--footer-height);
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.footer-content {
+    width: min(100% - calc(var(--min-side-padding) * 2), var(--desktop-width));
+    padding: 0 var(--content-padding);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: var(--footer-height);
+}
+
+.footer-left, .footer-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Botón de búsqueda */
+.search-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+.search-toggle img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* Iconos del footer */
+.footer-right a img,
+.footer-right button img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+   
+}
+
+.footer-right a:hover img,
+.footer-right button:hover img {
+    transform: scale(1.1);
+}
+
+/* Botones y controles */
+button, select {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: none;
+}
+
+/* Iconos */
+.fas, .fab {
+    transition: all 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    :root {
+        --content-padding: 1rem;
+    }
+}
+
+@media (min-width: 501px) and (max-width: 1000px) {
+    :root {
+        --content-padding: 1.5rem;
+    }
+}
+
+/* Logo */
+.logo-img {
+    height: 40px;
+    width: auto;
+    max-width: 120px;
+    margin-right: 1rem;
+    vertical-align: middle;
+    object-fit: contain;
+}
+.logo-link {
+    display: flex;
+    align-items: center;
+    max-height: 40px;
+}
+.footer-logo {
+    height: 24px;
+    width: auto;
+    max-width: 100px;
+    opacity: 0.6;
+    margin-left: 0.5rem;
+    vertical-align: middle;
+    object-fit: contain;
+}
+.footer-logo:hover {
+    opacity: 1;
+}
+
+.error-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 2rem;
+  }
+  
+  .error-content {
+    max-width: 600px;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .error-content h1 {
+    color: #dc3545;
+    margin-bottom: 1.5rem;
+  }
+  
+  .error-content p {
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+  }
+  
+  .error-actions {
+    margin-top: 2rem;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0069d9;
+  }
+/* Buscador desplegable */
+.search-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    display: none;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.2s ease;
+    z-index: 999;
+    width: 300px;
+  }
+  
+  /* Cuando se activa */
+  .search-dropdown.activo {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  /* Campo de entrada de búsqueda */
+  .search-dropdown input[type="text"] {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Resultados */
+  .search-results {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .search-results ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .search-results li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .search-results a {
+    display: block;
+    padding: 0.5rem;
+    background-color: var(--bg-accent);
+    border-radius: 4px;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  }
+  
+  .search-results a:hover {
+    background-color: var(--hover-color);
+  }
+  
+  /* Mensaje sin coincidencias */
+  .sin-resultados {
+    font-style: italic;
+    color: var(--accent-color);
+    padding: 0.5rem 0;
+  }
+  

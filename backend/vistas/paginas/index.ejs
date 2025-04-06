@@ -1,0 +1,76 @@
+<main class="container" role="main" aria-label="Contenido principal del sitio">
+  <div id="content">
+    <!-- Hero principal -->
+    <section class="hero-section" aria-label="Sección de bienvenida">
+      <h1 class="hero-title">
+        <%= t["home.title"] %>
+      </h1>
+      <h2 class="hero-subtitle">
+        <%= t["home.subtitle"] %>
+      </h2>
+
+      <div class="about-text">
+        <p><%= t["about.desc"] %></p>
+        <p><%= t["about.desc2"] %></p>
+        <p><%= t["about.desc3"] %></p>
+      </div>
+    </section>
+
+    <!-- Sección de destacados -->
+    <section class="featured-section" aria-label="Sección de servicios destacados">
+      <h2><%= t["home.featured"] %></h2>
+      <div class="featured-grid">
+        <div class="featured-item">
+          <i class="fas fa-server featured-icon" aria-hidden="true"></i>
+          <h3 class="featured-title"><%= t["home.systems"] %></h3>
+          <p><%= t["home.systems.desc"] %></p>
+        </div>
+        <div class="featured-item">
+          <i class="fas fa-network-wired featured-icon" aria-hidden="true"></i>
+          <h3 class="featured-title"><%= t["home.networks"] %></h3>
+          <p><%= t["home.networks.desc"] %></p>
+        </div>
+        <div class="featured-item">
+          <i class="fas fa-shield-alt featured-icon" aria-hidden="true"></i>
+          <h3 class="featured-title"><%= t["home.security"] %></h3>
+          <p><%= t["home.security.desc"] %></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sección de tecnologías -->
+    <section class="tech-section" aria-label="Sección de tecnologías dominadas">
+      <h2><%= t["home.technologies"] %></h2>
+      <ul class="tech-grid">
+        <% const tecnologias = [
+          { img: "Windows.svg", text: "Windows" , alt: "Icono de Windows"},
+          { img: "debian.svg", text: "Debian" , alt: "Icono de debian"},
+          { img: "ubuntu.svg", text: "Ubuntu" , alt: "Icono de Ubuntu"},
+          { img: "fedora.svg", text: "Fedora" , alt: "Icono de Fedora"},
+          { img: "arch.svg", text: "Arch Linux" , alt: "Icono de Arch-Linux"},
+          { img: "kalilinux.svg", text: "Kali Linux" , alt: "Icono de Kali-Linux"},
+          { img: "parrotos.svg", text: "Parrot OS" , alt: "Icono de Parrot OS" },
+          { img: "firewall.svg", text: "pfSense" , alt: "Icono de Firewall" },
+          { img: "firewall.svg", text: "SonicWall" , alt: "Icono de Firewall"},
+          { img: "vmware.svg", text: "VMware" , alt: "Icono de VmWare"},
+          { img: "proxmox.svg", text: "Proxmox" , alt: "Icono de Proxmox"},
+          { img: "docker.svg", text: "Docker" , alt: "Icono de Docker"},
+          { img: "acronis.svg", text: "Acronis" , alt: "Icono de Acronis"},
+          { img: "backupsms.ico", text: "Veeam" , alt: "Icono de Backups"},
+          { img: "datto.svg", text: "Datto" , alt: "Icono de Datto"},
+          { img: "python.svg", text: "Python" , alt: "Icono de Python"},
+          { img: "javascript.svg", text: "JavaScript" , alt: "Icono de Javascript"},
+          { img: "Html.svg", text: "HTML5" , alt: "Icono de HTML"},
+          { img: "css.svg", text: "CSS3" , alt: "Icono de CSS"}
+        ]; %>
+
+        <% tecnologias.forEach(t => { %>
+          <li class="tech-item">
+            <img src="/assets/img/logos/<%= t.img %>" alt="<%= t.alt %>" class="tech-icon" loading="lazy" />
+            <span><%= t.text %></span>
+          </li>
+        <% }) %>
+      </ul>
+    </section>
+  </div>
+</main>

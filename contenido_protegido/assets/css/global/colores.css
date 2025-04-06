@@ -1,0 +1,162 @@
+/* Importar fuentes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap');
+
+/* Variables de color y tipografía */
+:root {
+    /* Tipografía */
+    --font-primary: 'Poppins', sans-serif;
+    --font-mono: 'Roboto Mono', monospace;
+    --font-size-base: 16px;
+    --line-height-base: 1.5;
+}
+
+/* Variables para tema claro */
+/* :root[data-bs-theme="light"] {
+    --bg-primary: #dfdbdb;
+    --bg-secondary: #f8f9fa;
+    --bg-accent: #f0f2f5;
+    --text-primary: #2d3436;
+    --text-secondary: #636e72;
+    --accent-color: #0984e3;
+    --border-color: #dfe6e9;
+    --hover-color: #e9ecef;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+} */
+:root[data-bs-theme="light"] {
+    --bg-primary: #cfcfcf;        /* Gris medio */
+    --bg-secondary: #e0e0e0;      /* Gris claro, pero no blanco */
+    --bg-accent: #d4d4d4;         /* Gris con un tono cálido */
+    --text-primary: #2c2c2c;      /* Gris oscuro, no negro puro */
+    --text-secondary: #555;       /* Gris medio */
+    --accent-color: #6c5ce7;      /* Azul-violeta apagado */
+    --border-color: #b0b0b0;      /* Gris medio */
+    --hover-color: #d0d0d0;       /* Ligero cambio en hover */
+    --shadow-color: rgba(0, 0, 0, 0.05); /* Sombra sutil */
+}
+
+
+/* Variables para tema oscuro */
+:root[data-bs-theme="dark"] {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-accent: #363636;
+    --text-primary: #f5f6fa;
+    --text-secondary: #b2bec3;
+    --accent-color: #74b9ff;
+    --border-color: #444444;
+    --hover-color: #3d3d3d;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos base del cuerpo */
+body {
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estilos del header y nav */
+header, nav {
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 0;
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+header h1 {
+    font-weight: 600;
+    font-size: 2rem;
+    color: var(--text-color);
+    margin: 0;
+    text-align: center;
+}
+
+/* Estilos de navegación */
+nav {
+    padding: 0.5rem 0;
+}
+
+.menu-items {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.menu-items a {
+    color: var(--text-color);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    transition: color 0.3s ease;
+}
+
+.menu-items a:hover {
+    color: var(--accent-color);
+}
+
+/* Estilos del footer */
+footer {
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 1rem 0;
+    margin-top: 2rem;
+    box-shadow: 0 -2px 8px var(--shadow-color);
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    color: var(--text-color);
+}
+
+.footer-left p {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.footer-right a, .footer-right button {
+    color: var(--text-color);
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
+}
+
+.footer-right a:hover, .footer-right button:hover {
+    color: var(--accent-color);
+}
+
+/* Botones y controles */
+button, select {
+    font-family: var(--font-primary);
+    background-color: var(--bg-secondary);
+    color: var(--text-color);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+}
+
+button:hover, select:hover {
+    background-color: var(--bg-secondary);
+    border-color: var(--accent-color);
+}
+
+/* Estilos para iconos */
+.fas, .fab {
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+
+/* Transiciones suaves */
+* {
+    transition: background-color 0.3s ease, 
+                color 0.3s ease, 
+                border-color 0.3s ease, 
+                box-shadow 0.3s ease;
+}

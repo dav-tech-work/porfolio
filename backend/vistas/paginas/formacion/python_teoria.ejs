@@ -1,0 +1,37 @@
+<main class="code-container" role="main" aria-labelledby="titulo-teoria-python">
+  <h1 id="titulo-teoria-python" class="page-title"><%= t["python.theory.title"] %></h1>
+
+  <div id="content">
+    <% const temas = [
+      { id: "codigo_caracteristicas", archivo: "01_caracteristicas_basicas.py", clave: "basics" },
+      { id: "codigo_numeros", archivo: "02_numeros.py", clave: "numbers" },
+      { id: "codigo_booleanos", archivo: "03_booleanos.py", clave: "booleans" },
+      { id: "codigo_strings", archivo: "04_strings.py", clave: "strings" },
+      { id: "codigo_if", archivo: "06_if_elif_else.py", clave: "conditionals" },
+      { id: "codigo_operadores", archivo: "07_operadores_logicos.py", clave: "logic" },
+      { id: "codigo_excepciones", archivo: "08_excepciones.py", clave: "exceptions" },
+      { id: "codigo_librerias", archivo: "09_libreria.py", clave: "libraries" },
+      { id: "codigo_match", archivo: "10_match.py", clave: "match" },
+      { id: "codigo_listas", archivo: "11_listas.py", clave: "lists" },
+      { id: "codigo_bucles", archivo: "12_bucles.py", clave: "loops" },
+      { id: "codigo_diccionarios", archivo: "13_diccionario.py", clave: "dicts" },
+      { id: "codigo_tuplas", archivo: "14_tuplas.py", clave: "tuples" },
+      { id: "codigo_set", archivo: "15_set.py", clave: "set" },
+      { id: "codigo_funciones", archivo: "16_funciones.py", clave: "functions" }
+    ]; %>
+
+    <% temas.forEach(({ id, archivo, clave }) => { %>
+      <details aria-label="<%= t[`python.theory.${clave}`] %>">
+        <summary tabindex="0"><%= t[`python.theory.${clave}`] %></summary>
+        <pre><code class="language-python" id="<%= id %>" data-src="/contenido_protegido/assets/programacion/python/teoria/conceptos_basicos/<%= archivo %>"></code></pre>
+      </details>
+    <% }) %>
+
+    <!-- Objetos (bloque doble) -->
+    <details aria-label="<%= t['python.theory.objects'] %>">
+      <summary tabindex="0"><%= t["python.theory.objects"] %></summary>
+      <pre><code class="language-python" id="codigo_objetos-1" data-src="/contenido_protegido/assets/programacion/python/teoria/conceptos_basicos/clases.py"></code></pre>
+      <pre><code class="language-python" id="codigo_objetos" data-src="/contenido_protegido/assets/programacion/python/teoria/conceptos_basicos/animales.py"></code></pre>
+    </details>
+  </div>
+</main>

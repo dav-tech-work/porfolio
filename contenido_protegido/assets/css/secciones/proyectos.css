@@ -1,0 +1,325 @@
+/* Estilos para la página de proyectos */
+.projects-section {
+    padding: 2rem 0;
+    max-width: var(--desktop-width);
+    margin: 0 auto;
+    background: var(--bg-primary);
+    border-radius: 1rem;
+    margin-top: 2rem;
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.projects-section:first-child {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.projects-section h1 {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.projects-section h2 {
+    font-size: 2rem;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    text-align: center;
+    margin-top: 1rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.projects-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background: linear-gradient(to right, var(--accent-color), transparent);
+    border-radius: 3px;
+}
+
+.projects-section h3 {
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    position: relative;
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--accent-color);
+}
+
+.projects-section p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.projects-section:first-child p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* Filtros de proyectos */
+.projects-filters {
+    margin: 2rem 0;
+}
+
+.filters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.filter-btn {
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 500;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 1rem var(--content-padding);
+}
+
+.project-card {
+    background: var(--bg-secondary);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid var(--border-color);
+}
+
+.project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.project-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.project-content {
+    padding: 1.5rem;
+}
+
+.project-content h3 {
+    font-size: 1.25rem;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.project-content p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+.project-content cite {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.project-tech span {
+    background-color: var(--bg-accent);
+    color: var(--text-primary);
+    padding: 0.25rem 0.75rem;
+    border-radius: 1rem;
+    font-size: 0.9rem;
+    font-family: var(--font-mono);
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-links a {
+    color: var(--text-primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.project-links a:hover {
+    color: var(--accent-color);
+}
+
+.project-links i {
+    font-size: 1.1rem;
+}
+
+.project-link {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background: var(--accent-color);
+    color: var(--text-primary);
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.project-link:hover {
+    transform: translateY(-2px);
+    background: var(--accent-dark);
+}
+
+.project-link i {
+    margin-right: 0.5rem;
+}
+
+/* Paginación */
+.projects-pagination {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+#loadMore {
+    padding: 0.75rem 2rem;
+    font-weight: 500;
+    border-radius: 2rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: var(--mobile-width)) {
+    .projects-section {
+        padding: 1.5rem 0;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+        padding: 0.5rem var(--content-padding);
+    }
+
+    .project-card {
+        padding: 1.2rem;
+        display: grid;
+    }
+
+    .projects-section h2 {
+        font-size: 1.75rem;
+    }
+
+    .projects-section h3 {
+        font-size: 1.5rem;
+    }
+
+    .projects-section p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (min-width: 501px) and (max-width: 1000px) {
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: var(--mobile-width)) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .menu-items {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--bg-secondary);
+        padding: 1rem;
+        box-shadow: 0 2px 8px var(--shadow-color);
+        border-radius: 0 0 1rem 1rem;
+    }
+
+    .menu-items.active {
+        display: block;
+    }
+
+    .menu-items li {
+        margin: 0.5rem 0;
+    }
+
+    .menu-items a {
+        display: block;
+        padding: 0.5rem 0;
+        text-align: center;
+        color: var(--text-primary);
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .menu-items a:hover {
+        color: var(--accent-color);
+    }
+}
+.project-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* Estilo del modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.8);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    box-shadow: 0 0 20px #fff;
+    margin: auto;
+}

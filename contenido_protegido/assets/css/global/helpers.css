@@ -1,0 +1,70 @@
+/* ================================ */
+/* 🛠️ Clases utilitarias rápidas   */
+/* ================================ */
+
+/* 🔽 Visibilidad */
+.hidden {
+    display: none !important;
+  }
+  .invisible {
+    visibility: hidden;
+  }
+  
+  /* 🔲 Centrados */
+  .center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .text-center {
+    text-align: center;
+  }
+  .mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* 🧱 Espaciado */
+  .mt-1 { margin-top: 0.5rem; }
+  .mt-2 { margin-top: 1rem; }
+  .mb-1 { margin-bottom: 0.5rem; }
+  .mb-2 { margin-bottom: 1rem; }
+  .p-1  { padding: 0.5rem; }
+  .p-2  { padding: 1rem; }
+  
+  /* 🎨 Colores auxiliares */
+  .text-muted {
+    color: var(--text-muted, #888);
+  }
+  .bg-light {
+    background-color: #f8f9fa;
+  }
+  .bg-dark {
+    background-color: #212529;
+    color: #fff;
+  }
+  
+  /* 🖼️ Imagen responsiva */
+  .img-fluid {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* ⚡ Transiciones básicas */
+  .transition {
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* 🧩 Grid simples */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
