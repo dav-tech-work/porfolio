@@ -1,0 +1,46 @@
+
+
+<main class="contenedor">
+  <h1><%= titulo %></h1>
+  <p>🌐 Idioma actual: <strong><%= idioma %></strong></p>
+
+  <!-- 🧪 Bloque de verificación de idioma -->
+  <section class="idioma-test">
+    <h2>🧪 Verificación de idioma</h2>
+    <ul>
+      <li><strong>home.title:</strong> <%= t?.["home.title"] || "❌ No disponible" %></li>
+      <li><strong>cv.skills.title:</strong> <%= t?.["cv.skills.title"] || "❌ No disponible" %></li>
+      <li><strong>projects.title:</strong> <%= t?.["projects.title"] || "❌ No disponible" %></li>
+    </ul>
+    <p>
+      Cambiar idioma:
+      <a href="/test?lang=es">🇪🇸 Español</a> |
+      <a href="/test?lang=en">🇬🇧 Inglés</a> |
+      <a href="/test?lang=cat">🏴 Català</a>
+    </p>
+  </section>
+
+  <!-- 💬 Mensajes del formulario -->
+  <% if (mensajeExito) { %>
+    <div class="mensaje exito"><%= mensajeExito %></div>
+  <% } %>
+
+  <% if (mensajeError) { %>
+    <div class="mensaje error"><%= mensajeError %></div>
+  <% } %>
+
+  <!-- 📩 Formulario de prueba -->
+  <form method="POST" action="/test" class="formulario">
+    <!-- Token CSRF -->
+    <input type="hidden" name="csrf" value="<%= csrfToken %>">
+
+    <div>
+      <label for="test-nombre">Nombre:</label>
+      <input type="text" id="test-nombre" name="nombre" required placeholder="Introduce tu nombre">
+    </div>
+
+    <button type="submit">Enviar</button>
+  </form>
+</main>
+
+

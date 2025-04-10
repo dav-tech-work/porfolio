@@ -1,0 +1,38 @@
+<main class="code-container" role="main" aria-labelledby="titulo-teoria-js">
+  <h1 id="titulo-teoria-js" class="page-title"><%= t["js.theory.title"] %></h1>
+
+  <div id="content">
+
+    <% const bloques = {
+      variables: ["01_variables.js", "10_metodos_strings.js"],
+      conditionals: ["02_condicionales.js"],
+      logic: ["08_operadores_logicos.js"],
+      loops: ["04_bucle.js", "12_bucle_while.js", "14_bucles_for.js"],
+      objects: ["07_objetos.js", "13_objetos.js"],
+      arrays: ["06_arrays.js", "09_arrays.js", "11_metodos_arrays.js"],
+      functions: ["15_funciones.js"],
+      dom: ["16_DOM.js"],
+      review: ["repaso_js.js"]
+    }; %>
+
+    <% for (const [clave, archivos] of Object.entries(bloques)) { %>
+      <details aria-label="<%= t[`js.theory.${clave}`] %>">
+        <summary tabindex="0"><%= t[`js.theory.${clave}`] %></summary>
+        <% if (clave === "dom") { %>
+          <iframe
+            src="/public/assets/programacion/javascript/teoria/16_DOM.html"
+            sandbox="allow-scripts allow-same-origin"
+            title="Demostración de manipulación del DOM"
+          ></iframe>
+          <a href="/public/assets/programacion/javascript/teoria/16_DOM.html">
+            DOM
+          </a>
+        <% } %>
+        <% archivos.forEach(nombre => { %>
+          <pre><code class="language-javascript" data-src="/public/assets/programacion/javascript/teoria/<%= nombre %>"></code></pre>
+        <% }) %>
+      </details>
+    <% } %>
+
+  </div>
+</main>

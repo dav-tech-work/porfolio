@@ -1,0 +1,64 @@
+# Dependencias
+node_modules/
+# Es habitual ignorar node_modules, ya que se reconstruyen mediante npm/yarn en producción.
+
+# Entorno y configuración sensible
+.env
+.env.*.local
+# Las variables sensibles (como claves y secretos) no deben estar en Git. Sin embargo, es buena práctica incluir un .env.example con los valores por defecto para que otros sepan qué variables definir.
+.github
+.gitinore
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs_data/
+
+# Archivos de backup y temporales
+*.bak
+*.old
+*.tmp
+*.swp
+*.swo
+
+# Archivos comprimidos y backups
+*.zip
+*.7z
+*.tar
+*.gz
+web.zip
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Subidas de archivos (opcional según tu backend)
+uploads/
+uploads_data/
+contenido_data/
+
+# Compilación o build
+dist/
+build/
+out/
+
+# GitHub Actions (si procede)
+# .github/  <-- Suele ser útil mantenerlo para CI/CD
+
+# Archivos sensibles adicionales
+*.docx
+*.pdf
+*.pem
+*.key
+*.crt
+
+# Contenido protegido y rutas internas
+src/contenido_protegido/
+src/views/paginas/zona-secreta.ejs
+src/views/paginas/error.ejs
+**/fondo1.zip
+**/*.py
+src/utils/seguridad/olds/

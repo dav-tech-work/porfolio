@@ -1,0 +1,17 @@
+<main class="code-container" role="main" aria-labelledby="titulo-practicas-js">
+  <h1 id="titulo-practicas-js" class="page-title"><%= t["js.practices.title"] %></h1>
+
+  <div id="content">
+    <% for (let i = 1; i <= 10; i++) { %>
+      <details aria-label="<%= t['js.practices.label'] %> <%= i %>">
+        <summary tabindex="0"><%= t["js.practices.label"] %> <%= i %></summary>
+        <pre>
+          <code
+            class="language-javascript"
+            data-src="/public/assets/programacion/javascript/practicas/<%= String(i).padStart(2, '0') %>_practica.js">
+          </code>
+        </pre>
+      </details>
+    <% } %>
+  </div>
+</main>
