@@ -163,7 +163,7 @@ Este proyecto está licenciado bajo MIT.
 
 ## ✉️ Autor
 
-Daniel Arribas VelázquezAdministrador de sistemas y redes, desarrollador backend autodidacta, obsesionado con la seguridad.
+Daniel Arribas Velázquez  Administrador de sistemas y redes, desarrollador backend autodidacta, obsesionado con la seguridad.
 ---
 
 ## ⚡ To-Do / Futuras mejoras
