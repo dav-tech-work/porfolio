@@ -151,6 +151,7 @@ La configuración DNS y la exposición del puerto están gestionadas con reglas 
 ---
 
 🧠 Filosofía del proyecto
+---
 
 Este porfolio no busca ser una SPA vistosa.Busca demostrar que se puede tener una web segura, privada, eficiente y mantenible, sin necesidad de frameworks de moda, dependencias innecesarias ni servidores expuestos.
 
