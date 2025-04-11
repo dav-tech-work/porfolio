@@ -1,5 +1,6 @@
 
-#  Porfolio Web Seguro (Docker + Node.js + EJS) – Daniel Arribas Velázquez
+#  Porfolio Web Seguro (Docker + Node.js + EJS) 🔐
+#  Daniel Arribas Velázquez
 
 Este proyecto es un porfolio personal autogestionado, seguro y modular. Se ejecuta en un contenedor Docker dentro de un servidor protegido por pfSense y Cloudflare Zero Trust.
 
