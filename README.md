@@ -1,111 +1,176 @@
-# 🔐 Porfolio Web Seguro – Daniel Arribas Velázquez
 
-Este proyecto no es un porfolio más. Es una aplicación web **modular, segura y escalable** diseñada desde cero con foco en la **seguridad, el control y la portabilidad**.
+#  Porfolio Web Seguro (Docker + Node.js + EJS) – Daniel Arribas Velázquez
 
-> "Si tu backend no protege, entonces no sirve. Este sí lo hace."
-
----
-
-## 🚀 Características principales
-
-- ✅ **Backend en Node.js** con Express, organizado por middlewares y rutas modulares.
-- ✅ **Sistema de plantillas EJS + layouts**, renderizado dinámico desde el servidor.
-- ✅ **Protección completa mediante CSP con `nonce`**, sin `unsafe-inline`.
-- ✅ **Middlewares propios** para:
-  - Protección CSRF
-  - Sanitización de entrada
-  - Limitación de peticiones (`rate limiting`)
-  - Aplicación de cabeceras de seguridad avanzadas
-- ✅ **Contenido protegido** servido solo bajo lógica del backend.
-- ✅ **Soporte para internacionalización (i18n)** con archivos JSON por idioma.
-- ✅ **Generador dinámico de buscador (`buscador.json`)** desde contenido.
-- ✅ **Preparado para autenticación y roles en futuras versiones.**
+Este proyecto es un porfolio personal autogestionado, seguro y modular. Se ejecuta en un contenedor Docker dentro de un servidor protegido por pfSense y Cloudflare Zero Trust.
 
 ---
 
-## 🧱 Estructura del proyecto
+## ✨ Características
 
-.
-├── backend/
-│   ├── app.js                # Entrada principal del servidor
-│   ├── routes/               # Rutas organizadas por función
-│   ├── middlewares/          # Seguridad, logs, CSP, sanitización, etc.
-│   ├── vistas/               # Plantillas EJS
-│   └── utils/                # Servicios internos, generadores, idiomas
-├── contenido_protegido/      # Archivos visibles al usuario, protegidos
-│   ├── assets/
-│   └── i18n/                 # Archivos de idioma
-├── Dockerfile
-├── docker-compose.yml
-├── .env.example
-└── README.md
+- Backend en **Node.js + Express** con plantillas **EJS**.
+- Contenido estático protegido y organizado.
+- Sistema de build y generador automático de buscador.
+- Seguridad avanzada:
+  - CSP, cookies seguras, CSRF, rate limiting, `helmet`, `bcrypt`.
+  - Usuario no privilegiado y `read_only` dentro del contenedor.
+- Servido vía **Docker** con recursos limitados.
+- Acceso saliente controlado por **Cloudflare Zero Trust**.
 
 ---
 
-## 🛡️ Seguridad aplicada
+## 🚸 Arquitectura de despliegue
 
-| Mecanismo             | Estado       |
-|-----------------------|--------------|
-| HTTPS (Zero Trust)    | ✅ Cloudflare Tunnel (Zero Trust)
-| CSP con `nonce`       | ✅ Dinámico, sin `unsafe-inline`
-| X-Frame-Options       | ✅ `DENY`
-| CSRF                  | ✅ Middleware dedicado
-| Cookies               | ✅ `HttpOnly`, `Secure`, `SameSite=Strict`
-| Sanitización de input | ✅ Middleware personalizado
-| Rate Limiting         | ✅ En rutas sensibles
-| Logs                  | ✅ Personalizados y extensibles
-
----
-
-## 🐳 Despliegue con Docker
-
-```bash
-git clone https://github.com/tuusuario/porfolio-seguro
-cd porfolio-seguro
-cp .env.example .env
-docker-compose up --build
+```text
+[ Navegador ]
+     |
+[ Cloudflare Zero Trust ]
+     |
+[ pfSense Firewall ]
+     |
+[ Servidor VPS con Docker Compose ]
+     |
+[ Contenedor Node.js ejecutando el porfolio ]
 ```
 
-> El sitio se sirve de forma segura por el puerto 3000 (redirigido por Docker).  
-> Accede solo a través de Cloudflare Tunnel o red segura.
+---
+
+## 🚀 Tecnologías principales
+
+- **Backend:** Node.js, Express, EJS
+- **Frontend:** HTML, CSS modular, sin framework JS
+- **Seguridad:** Helmet, CSRF, Rate Limit, Cookies HttpOnly, bcrypt
+- **DevOps:** Docker, docker-compose, Cloudflare, pfSense
 
 ---
 
-## 🧠 Filosofía del proyecto
+## 📁 Estructura del proyecto
 
-Este porfolio no busca ser una SPA vistosa.  
-Busca demostrar que se puede tener una web **segura, privada, eficiente y mantenible**, sin necesidad de frameworks de moda, dependencias innecesarias ni servidores expuestos.
-
----
-
-## ✍️ Autor
-
-**Daniel Arribas Velázquez**  
-Administrador de sistemas y redes, desarrollador backend autodidacta, obsesionado con la seguridad.  
-[daniel-arribas-velazquez.dav-tech.work](https://daniel-arribas-velazquez.dav-tech.work/)
-
----
-
-## 🛠️ Próximos pasos
-
-- [ ] Integración de login y roles.
-- [ ] Sistema de logs avanzados y alertas.
-- [ ] Backup/restauración del contenido.
-- [ ] Generador de contenido autoindexado.
-- [ ] Panel administrativo para gestión.
+```
+/
+├── .env.example
+├── docker-compose.yml
+├── package.json
+├── public/                # Archivos estáticos: CSS, imagenes, etc
+├── src/                   # Backend Express y servicios
+│   ├── app.mjs            # Entrada principal
+│   ├── utils/             # Módulos como logger, generador de buscador
+│   └── views/             # Plantillas EJS
+└── README.md              # Este archivo
+```
 
 ---
 
+## 🔧 Instalación local (dev)
+
+```bash
+# Clona el repositorio y entra al proyecto
+npm install
+cp .env.example .env
+
+# Ejecuta el proyecto
+npm run dev
+```
+
+---
+
+## 🛠️ Despliegue con Docker
+
+### docker-compose.yml
+```yaml
+services:
+  porfolio:
+    image: porfolio
+    container_name: porfolio
+    ports:
+      - "8000:5001"
+    restart: always
+    environment:
+      NODE_ENV: production
+      PORT: 5001
+    read_only: true
+    tmpfs:
+      - /tmp
+    user: "2001:2001"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 256M
+    networks:
+      - porfolio_net
+
+networks:
+  porfolio_net:
+    driver: bridge
+```
+
+### Comandos de despliegue
+```bash
+docker compose up -d
+```
+
+---
+
+## 🔐 Seguridad implementada
+
+- **CSP (Content Security Policy)** con `nonce`
+- **Helmet** para headers seguros
+- **CSRF protection** con `csurf`
+- **Rate Limiting** con `express-rate-limit`
+- **Protección contra fuerza bruta**
+- **Cookies:** HttpOnly, Secure, SameSite
+- **Usuario sin privilegios en Docker**
+- **Read-only FS + tmpfs + no-new-privileges + cap_drop**
+
+---
+
+## 💡 Utilidades
+
+### Generador de buscador
+```bash
+npm run generar:buscador
+```
+Esto analiza los HTML y genera `public/assets/data/buscador.json` para el buscador interno.
+
+---
+
+## 🌐 Dominio y acceso
+
+Este proyecto está expuesto a través de un proxy seguro con Cloudflare, y puede accederse desde:
+
+```
+https://daniel-arribas-velazquez.dav-tech.work
+```
+
+La configuración DNS y la exposición del puerto están gestionadas con reglas de Cloudflare Zero Trust.
+
+---
+
+🧠 Filosofía del proyecto
+
+Este porfolio no busca ser una SPA vistosa.Busca demostrar que se puede tener una web segura, privada, eficiente y mantenible, sin necesidad de frameworks de moda, dependencias innecesarias ni servidores expuestos.
+
+---
 ## 📜 Licencia
 
-Este proyecto está licenciado bajo [MIT](LICENSE).
+Este proyecto está licenciado bajo MIT.
 
-## 🔒 Sobre el contenido protegido
+---
 
-Este repositorio **no incluye contenido personal, educativo ni privado** de la carpeta `contenido_protegido/`.
+## ✉️ Autor
 
-- Solo se comparte la **estructura técnica, lógica de backend y sistema de seguridad**.
-- Cualquier archivo sensible (HTMLs, PDFs, material personal) ha sido **intencionalmente excluido mediante `.gitignore`**.
-- El proyecto está pensado para ser una base técnica reutilizable, no una demo con datos reales.
+Daniel Arribas VelázquezAdministrador de sistemas y redes, desarrollador backend autodidacta, obsesionado con la seguridad.
+---
 
-> Esto garantiza que el repositorio pueda ser público sin comprometer privacidad ni integridad.
+## ⚡ To-Do / Futuras mejoras
+
+- Panel de administración protegido
+- Estadísticas de visitas
+- Panel para editar contenido del porfolio
+- Pruebas automáticas con GitHub Actions
+- Integración de Telegram/Discord para notificaciones
+
