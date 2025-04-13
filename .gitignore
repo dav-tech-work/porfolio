@@ -56,9 +56,10 @@ out/
 *.crt
 
 # Contenido protegido y rutas internas
-src/contenido_protegido/
+src/contenido_protegido/*
 src/views/paginas/zona-secreta.ejs
 src/views/paginas/error.ejs
 **/fondo1.zip
 **/*.py
 src/utils/seguridad/olds/
+src/contenido_protegido

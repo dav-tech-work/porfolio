@@ -2,16 +2,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="author" content="Tu nombre" />
-  <meta name="description" content="Mi portafolio personal" />
+  <meta name="author" content="Daniel Arribas Velázquez" />
+  <meta name="description" content="Portafolio profesional de Daniel Arribas: proyectos, formación y contacto." />
   <meta name="robots" content="index, follow" />
 
-  <title><%= titulo || "Mi Porfolio" %></title>
+  <title><%= titulo || "Portafolio de Daniel Arribas" %></title>
 
-  <!-- Icono -->
+  <!-- Favicon -->
   <link rel="icon" href="/assets/img/favicon/favicon-32x32.png" type="image/png" />
 
-  <!-- Font Awesome (solo si realmente lo usas) -->
+  <!-- Google Fonts -->
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap"
+  />
+
+  <!-- Font Awesome -->
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -26,35 +32,43 @@
   <link rel="stylesheet" href="/assets/css/global/helpers.css" />
   <link rel="stylesheet" href="/assets/css/global/search.css" />
 
+  <!-- Content Security Policy -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self' 'nonce-<%= nonce %>'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:;">
+
+  <!-- Scripts comunes -->
+  <% const scriptsList = typeof scripts !== "undefined" ? scripts : []; %>
+  <% scriptsList.forEach(src => { %>
+    <script src="<%= src %>" nonce="<%= nonce %>" defer></script>
+  <% }) %>
+
   <!-- Estilo por sección -->
   <%
-  const tiposCode = [
-    "html_practicas", "html_teoria",
-    "javascript_practicas", "javascript_teoria",
-    "python_practicas", "python_teoria"
-  ];
-%>
-<% if (tiposCode.includes(tipo)) { %>
-  <link rel="stylesheet" href="/assets/css/secciones/code.css" />
-  
-  <!-- Highlight.js para resaltado de sintaxis -->
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
-  
-  <!-- Script para verificar que highlight.js se cargue correctamente -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (window.hljs) {
-        console.log('highlight.js cargado correctamente en head.ejs');
-      } else {
-        console.error('highlight.js NO se cargó correctamente en head.ejs');
-      }
-    });
-  </script>
-<% } else if (tipo) { %>
-  <link rel="stylesheet" href="/assets/css/secciones/<%= tipo %>.css" />
-<% } %>
+    const tiposCode = [
+      "html_practicas", "html_teoria",
+      "javascript_practicas", "javascript_teoria",
+      "python_practicas", "python_teoria"
+    ];
+  %>
+  <% if (tiposCode.includes(tipo)) { %>
+    <link rel="stylesheet" href="/assets/css/secciones/code.css" />
 
+    <!-- Highlight.js para resaltado de sintaxis -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        if (window.hljs) {
+          console.log('highlight.js cargado correctamente en head.ejs');
+        } else {
+          console.error('highlight.js NO se cargó correctamente en head.ejs');
+        }
+      });
+    </script>
+  <% } else if (tipo) { %>
+    <link rel="stylesheet" href="/assets/css/secciones/<%= tipo %>.css" />
+  <% } %>
 </head>

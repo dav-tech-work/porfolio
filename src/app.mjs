@@ -16,11 +16,8 @@ import idioma from "./middlewares/idioma.mjs";
 import logger from "./middlewares/logger.mjs";
 import protecciones from "./middlewares/protecciones.mjs";
 import sanitizer from "./middlewares/sanitizer.mjs";
-// Importamos el rate limiter basado en express-rate-limit (implementación revisada)
 import limiter from "./middlewares/limiter.mjs";
-// Importamos el helper para adjuntar el token CSRF al response (implementación basada en csurf)
 import { attachCsrfToken } from "./middlewares/csrf-token-handler.mjs";
-
 import { usarCompresion } from "./utils/optimizacion/index.mjs";
 import { registrar } from "./utils/servicios/logger.mjs";
 
@@ -61,19 +58,8 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: [
-          "'self'",
-          (req, res) => `'nonce-${res.locals.nonce}'`,
-          "https://cdnjs.cloudflare.com",
-          "https://cdn.jsdelivr.net",
-          "https://static.cloudflareinsights.com"
-        ],
-        styleSrc: [
-          "'self'",
-          (req, res) => `'nonce-${res.locals.nonce}'`,
-          "https://fonts.googleapis.com",
-          "https://cdnjs.cloudflare.com"
-        ],
+        scriptSrc: ["'self'", (req, res) => `'nonce-${res.locals.nonce}'`, "https://cdnjs.cloudflare.com", "https://cdn.jsdelivr.net", "https://static.cloudflareinsights.com"],
+        styleSrc: ["'self'", (req, res) => `'nonce-${res.locals.nonce}'`, "https://fonts.googleapis.com", "https://cdnjs.cloudflare.com"],
         fontSrc: ["'self'", "https://fonts.gstatic.com", "https://cdnjs.cloudflare.com"],
         imgSrc: ["'self'", "data:", "https:"],
         connectSrc: ["'self'"],
@@ -99,83 +85,38 @@ app.use(
 app.set("trust proxy", 1);
 
 // Middlewares esenciales
-app.use(
-  cookieParser({
-    secure: config.ENV === "production",
-    httpOnly: true,
-    sameSite: "strict"
-  })
-);
+app.use(cookieParser({ secure: config.ENV === "production", httpOnly: true, sameSite: "strict" }));
+app.use(usarCompresion({ level: 6, threshold: 500 }));
 
-app.use(
-  usarCompresion({
-    level: 6, // Nivel de compresión optimizado
-    threshold: 500 // Comprimir contenido mayor a 500 bytes
-  })
-);
-
-// Configurar opción de caché para archivos estáticos
-const cacheOptions = {
-  maxAge: config.ENV === "production" ? "1d" : 0,
-  etag: true,
-  lastModified: true
-};
-
-// Servir archivos estáticos desde la carpeta "public"
-app.use(
-  "/assets",
-  express.static(path.join(__dirname, "..", "public", "assets"), cacheOptions)
-);
-app.use(
-  "/pages/sistemas",
-  express.static(path.join(__dirname, "..", "public", "pages", "sistemas"), cacheOptions)
-);
-app.use(
-  "/assets/programacion",
-  express.static(path.join(__dirname, "..", "public", "assets", "programacion"), cacheOptions)
-);
+// Archivos estáticos
+const cacheOptions = { maxAge: config.ENV === "production" ? "1d" : 0, etag: true, lastModified: true };
+app.use("/assets", express.static(path.join(__dirname, "..", "public", "assets"), cacheOptions));
+app.use("/pages/sistemas", express.static(path.join(__dirname, "..", "public", "pages", "sistemas"), cacheOptions));
+app.use("/assets/programacion", express.static(path.join(__dirname, "..", "public", "assets", "programacion"), cacheOptions));
 
 // Middlewares personalizados
 app.use(logger);
 app.use(protecciones);
 app.use(idioma);
 
-// ----- Integración de CSRF con csurf -----
-// Condicionalmente aplicar csurf, omitiéndolo en rutas excluidas (ej. /api/webhook)
+// CSRF
 const csrfExcludedPaths = ["/api/webhook"];
 app.use((req, res, next) => {
-  if (csrfExcludedPaths.includes(req.path)) {
-    return next();
-  }
-  // Aplicar csurf con opciones basadas en cookies
-  return csurf({
-    cookie: {
-      httpOnly: true,
-      secure: config.ENV === "production",
-      sameSite: "strict"
-    }
-  })(req, res, next);
+  if (csrfExcludedPaths.includes(req.path)) return next();
+  return csurf({ cookie: { httpOnly: true, secure: config.ENV === "production", sameSite: "strict" } })(req, res, next);
 });
-// Middleware que extrae y asigna el token CSRF a res.locals para su uso en vistas y formularios
 app.use(attachCsrfToken);
 
-// Aplicar rate limiter (basado en express-rate-limit)
 app.use(limiter);
-
-// Aplicar sanitizer
 app.use(sanitizer);
-
-// Parsing de formularios con límites de seguridad
 app.use(express.json({ limit: "50kb" }));
 app.use(express.urlencoded({ extended: true, limit: "50kb" }));
 
-// Configurar rutas principales
+// Rutas
 app.use("/", homeRoutes);
 app.use("/", formacionRoutes);
 app.use("/", contactoRoutes);
 app.use("/", protegidasRoutes);
-
-// Rutas de prueba solo en entornos de desarrollo y test
 if (config.ENV === "development" || config.ENV === "test") {
   app.use("/", testRoutes);
   registrar("Rutas de prueba habilitadas en entorno: " + config.ENV, "warn");
@@ -194,10 +135,7 @@ app.get("/", (req, res) => {
     });
   } catch (err) {
     registrar(`Error al renderizar index.ejs: ${err.message}`, "error");
-    const mensajeError =
-      config.ENV === "production"
-        ? "Ha ocurrido un error al cargar la página"
-        : `Error al renderizar index.ejs: ${err.message}`;
+    const mensajeError = config.ENV === "production" ? "Ha ocurrido un error al cargar la página" : `Error al renderizar index.ejs: ${err.message}`;
     res.status(500).render("paginas/error", {
       titulo: "Error",
       tipo: "error",
@@ -209,34 +147,12 @@ app.get("/", (req, res) => {
   }
 });
 
-// Ruta dinámica /pagina/:nombre con verificación asíncrona
+// Ruta dinámica
 app.get("/pagina/:nombre", async (req, res) => {
   const { nombre } = req.params;
-  const paginasPermitidas = [
-    "curriculum",
-    "proyectos",
-    "formacion",
-    "python_teoria",
-    "python_practicas",
-    "javascript_teoria",
-    "javascript_practicas",
-    "html_teoria",
-    "html_teorias" // Ajusta según corresponda
-  ];
-
-  if (
-    !nombre ||
-    /[\/\\.]/.test(nombre) ||
-    nombre.includes("..") ||
-    !paginasPermitidas.includes(nombre)
-  ) {
-    return res.status(404).render("paginas/404", {
-      titulo: "404",
-      tipo: "error",
-      idioma: req.idioma,
-      t: req.traducciones,
-      nonce: res.locals.nonce
-    });
+  const paginasPermitidas = ["curriculum", "proyectos", "formacion", "python_teoria", "python_practicas", "javascript_teoria", "javascript_practicas", "html_teoria", "html_teorias"];
+  if (!nombre || /[\/\\.]/.test(nombre) || nombre.includes("..") || !paginasPermitidas.includes(nombre)) {
+    return res.status(404).render("paginas/404", { titulo: "404", tipo: "error", idioma: req.idioma, t: req.traducciones, nonce: res.locals.nonce });
   }
 
   const rutasPosibles = [`paginas/formacion/${nombre}`, `paginas/${nombre}`];
@@ -252,9 +168,7 @@ app.get("/pagina/:nombre", async (req, res) => {
         csrfToken: res.locals.csrfToken,
         nonce: res.locals.nonce
       });
-    } catch (err) {
-      // Continúa con la siguiente ruta posible
-    }
+    } catch (err) {}
   }
 
   res.status(404).render("paginas/404", {
@@ -266,11 +180,10 @@ app.get("/pagina/:nombre", async (req, res) => {
   });
 });
 
-// Manejador global de errores
+// Errores globales
 app.use((err, req, res, next) => {
   registrar(`Error no controlado: ${err.message}\n${err.stack}`, "error");
-  const mensajeError =
-    config.ENV === "production" ? "Ha ocurrido un error inesperado" : `Error: ${err.message}`;
+  const mensajeError = config.ENV === "production" ? "Ha ocurrido un error inesperado" : `Error: ${err.message}`;
   res.status(500).render("paginas/error", {
     titulo: "Error",
     tipo: "error",
@@ -281,7 +194,7 @@ app.use((err, req, res, next) => {
   });
 });
 
-// Fallback 404 mejorado
+// Fallback 404
 app.use((req, res) => {
   try {
     registrar(`Fallback 404 activado para: ${req.originalUrl}`, "warn");
@@ -304,7 +217,7 @@ const server = app.listen(PORT, () => {
   registrar(`Servidor corriendo en http://localhost:${PORT} (Entorno: ${config.ENV})`, "info");
 });
 
-// Manejo de cierre limpio
+// Cierre limpio
 process.on("SIGTERM", () => {
   registrar("SIGTERM recibido, cerrando servidor...", "info");
   server.close(() => {

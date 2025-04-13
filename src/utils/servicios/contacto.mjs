@@ -1,6 +1,6 @@
 import { validarEmail } from "../seguridad/validate.mjs";
 import { sanitize } from "../seguridad/sanitize.mjs";
-import csrf from "../seguridad/olds/csrf.mjs";
+import { validarTokenCSRF } from "../../middlewares/csrf.mjs";
 
 export function procesarFormularioContacto(req) {
   const { body, cookies } = req;
@@ -10,7 +10,7 @@ export function procesarFormularioContacto(req) {
   const tokenServidor = cookies.csrfToken;
 
   // CSRF
-  if (!csrf.validarToken(tokenCliente, tokenServidor)) {
+  if (!validarTokenCSRF(tokenCliente, tokenServidor)) {
     return { ok: false, error: "Token CSRF inválido." };
   }
 

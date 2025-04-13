@@ -15,12 +15,12 @@ const REGEX = {
 export const sanitize = {
   text: (input, maxLength = 500) => {
     if (typeof input !== 'string') return '';
-    
+
     // Detectar posibles ataques
     if (REGEX.SQL_INJECTION.test(input) || REGEX.COMMAND_INJECTION.test(input)) {
       registrar(`Posible intento de inyección detectado: ${input.substring(0, 100)}`, "warn");
     }
-    
+
     return input
       .replace(REGEX.DANGEROUS_CHARS, '')
       .replace(REGEX.DANGEROUS_PATTERNS, '')
@@ -31,43 +31,43 @@ export const sanitize = {
 
   html: (input, maxLength = 1000) => {
     if (typeof input !== 'string') return '';
-    
+
     // Permitir algunas etiquetas HTML básicas pero eliminar atributos peligrosos
     const allowedTags = ['p', 'br', 'b', 'i', 'strong', 'em', 'ul', 'ol', 'li', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
-    
+
     let result = input.replace(/<\/?([a-z][a-z0-9]*)\b[^>]*>/gi, (match, tag) => {
       if (allowedTags.includes(tag.toLowerCase())) {
         return match.replace(/ .*?=(['"]).*?\1/g, '');
       }
       return '';
     });
-    
+
     result = result
       .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '')
       .replace(REGEX.DANGEROUS_PATTERNS, '')
       .replace(REGEX.HTML_COMMENTS, '')
       .substring(0, maxLength);
-      
+
     return result;
   },
 
   url: (url) => {
     if (typeof url !== 'string') return '';
-    
+
     if (REGEX.PATH_TRAVERSAL.test(url)) {
       registrar(`Posible intento de path traversal detectado: ${url}`, "warn");
       return '';
     }
-    
+
     try {
       const urlObj = new URL(url);
       if (!['http:', 'https:'].includes(urlObj.protocol)) return '';
-      
+
       const blacklistedDomains = ['evil.com', 'malware.org'];
       if (blacklistedDomains.some(domain => urlObj.hostname.includes(domain))) {
         return '';
       }
-      
+
       return urlObj.toString();
     } catch {
       if (url.startsWith('/') || url.startsWith('#')) {
@@ -91,7 +91,7 @@ export const sanitize = {
 
     const sanitizeValue = (value, depth = 0) => {
       if (depth > maxDepth) return null;
-      
+
       if (typeof value === 'string') return sanitize.text(value, config.LIMITS.JSON_FIELD_LENGTH || 1000);
       if (Array.isArray(value)) {
         const maxArraySize = config.LIMITS.JSON_ARRAY_SIZE || 100;
@@ -103,7 +103,7 @@ export const sanitize = {
           .filter(([k]) => k.length <= 50)
           .slice(0, maxProps)
           .map(([k, v]) => [sanitize.text(k, 50), sanitizeValue(v, depth + 1)]);
-          
+
         return Object.fromEntries(entries);
       }
       return value;
@@ -111,7 +111,7 @@ export const sanitize = {
 
     return sanitizeValue(input);
   },
-  
+
   filename: (input) => {
     if (typeof input !== 'string') return '';
     return input
@@ -119,7 +119,7 @@ export const sanitize = {
       .replace(/\.\./g, '')
       .substring(0, 100);
   },
-  
+
   email: (input) => {
     if (typeof input !== 'string') return '';
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
