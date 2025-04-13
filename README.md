@@ -1,4 +1,5 @@
-# 🔐 Porfolio Web Seguro  ![Security Level](https://img.shields.io/badge/security-9.5%2F10-brightgreen)
+
+# 🔐 Porfolio Web Seguro ![Security Level](https://img.shields.io/badge/security-9.5%2F10-brightgreen)
 
 Este proyecto no es un porfolio más. Es una aplicación web **modular, segura y escalable** diseñada desde cero con foco en la **seguridad, el control y la portabilidad**.
 
@@ -19,7 +20,25 @@ Este proyecto no es un porfolio más. Es una aplicación web **modular, segura y
 - ✅ **Contenido protegido** servido solo bajo lógica del backend.
 - ✅ **Soporte para internacionalización (i18n)** con archivos JSON por idioma.
 - ✅ **Generador dinámico de buscador (`buscador.json`)** desde contenido.
+- ✅ **Sistema interno de verificación de calidad del código.**
 - ✅ **Preparado para autenticación y roles en futuras versiones.**
+
+---
+
+## 🧪 Tests automáticos de calidad y seguridad
+
+El proyecto incluye scripts personalizados para garantizar la calidad y seguridad del código antes de subirlo:
+
+| Script | Descripción |
+|--------|-------------|
+| `npm run test:codigo` | Detecta `var`, `console.log`, `debugger`, comentarios sin cerrar, HTML sin `DOCTYPE`, scripts sin `type="module"`, duplicados, etc. |
+| `npm run test:importaciones` | Verifica que **todas las rutas de importación sean válidas**, evitando errores en ejecución. |
+| `npm run test:huerfanos` | Detecta archivos **no utilizados ni enlazados** (CSS, JS, HTML), para limpiar o revisar dependencias obsoletas. |
+
+### 🧼 Filosofía de testing:
+> *"No basta con que funcione, tiene que estar limpio, mantenible y auditado."*
+
+Estos tests no son decorativos: son herramientas reales de auditoría interna.
 
 ---
 
@@ -30,12 +49,15 @@ Este proyecto no es un porfolio más. Es una aplicación web **modular, segura y
 ├── .env.example
 ├── docker-compose.yml
 ├── package.json
-├── public/                # Archivos estáticos: CSS, imagenes, etc
+├── public/                # Archivos estáticos: CSS, imágenes, scripts frontend
 ├── src/                   # Backend Express y servicios
 │   ├── app.mjs            # Entrada principal
-│   ├── utils/             # Módulos como logger, generador de buscador
-│   └── views/             # Plantillas EJS
-└── README.md              # Este archivo
+│   ├── middlewares/       # Seguridad, idioma, protecciones, etc.
+│   ├── utils/             # Módulos (logger, sanitizador, generador de buscador...)
+│   ├── scripts/           # Scripts de test y verificación
+│   ├── routes/            # Rutas modulares
+│   └── views/             # Plantillas EJS organizadas por sección
+└── README.md
 ```
 
 ---
@@ -75,13 +97,14 @@ Cumple o supera los requisitos del nivel 2 de OWASP ASVS y se acerca al nivel 3:
 
 ### 🔒 Estado actual
 
-> 🟢 **Nivel de seguridad estimado: 9.5 / 10**  
-> 🧠 Arquitectura sólida y segura, lista para ser auditada y escalada  
+> 🟢 **Nivel de seguridad estimado: 9.5 / 10**
+> 🧠 Arquitectura sólida y segura, lista para ser auditada y escalada
 > 📈 Mejora continua en curso con pruebas automatizadas y perfiles avanzados
 
 ---
 
 ## 🐳 Despliegue con Docker
+
 
 ### docker-compose.yml
 ```yaml
@@ -147,28 +170,27 @@ La configuración DNS y la exposición del puerto están gestionadas con reglas 
 
 ## 🧠 Filosofía del proyecto
 
-Este porfolio no busca ser una SPA vistosa.  
-Busca demostrar que se puede tener una web **segura, privada, eficiente y mantenible**, sin necesidad de frameworks de moda, dependencias innecesarias ni servidores expuestos.
+Este porfolio no busca ser una SPA vistosa.
+Busca demostrar que se puede tener una web **segura, privada, eficiente y mantenible**, sin frameworks de moda, sin exceso de dependencias, sin exponer el servidor.
 
 ---
 
 ## ✍️ Autor
 
-**Daniel Arribas Velázquez**  
-Administrador de sistemas y redes, desarrollador backend autodidacta, obsesionado con la seguridad.  
+**Daniel Arribas Velázquez**
+Administrador de sistemas y redes, desarrollador backend autodidacta, obsesionado con la seguridad.
 [daniel-arribas-velazquez.dav-tech.work](https://daniel-arribas-velazquez.dav-tech.work/)
 
 ---
 
 ## ⚡ Próximos pasos
 
-- [ ] Integración de login y roles.
-- [ ] Sistema de logs avanzados y alertas.
-- [ ] Backup/restauración del contenido.
-- [ ] Generador de contenido autoindexado.
-- [ ] Panel administrativo para gestión.
-- [ ] Exportar logs y auditorías a Telegram o Discord.
-- [ ] Pruebas automatizadas con GitHub Actions.
+- [x] Scripts de auditoría automatizados (`var`, `console.log`, importaciones, huérfanos)
+- [ ] Integración de login y control de roles
+- [ ] Sistema de alertas por logs
+- [ ] Exportación automática de errores a Telegram/Discord
+- [ ] Panel administrativo
+- [ ] CI/CD con GitHub Actions
 
 ---
 
@@ -185,4 +207,3 @@ Este repositorio **no incluye contenido personal, educativo ni privado** de la c
 - El proyecto está pensado para ser una base técnica reutilizable, no una demo con datos reales.
 
 > Esto garantiza que el repositorio pueda ser público sin comprometer privacidad ni integridad.
-
