@@ -1,9 +1,13 @@
-# 🔐 Porfolio Web Seguro ![Security Level](https://img.shields.io/badge/security-9.5%2F10-brightgreen)
+# 🔐 Porfolio Web Seguro ![Security Level](https://img.shields.io/badge/security-135%2F100%20A%2B-brightgreen)
 
 Este proyecto no es un porfolio más. Es una aplicación web **modular, segura y escalable** diseñada desde cero con foco en la **seguridad, el control y la portabilidad**, tanto para desarrolladores como para usuarios.
 
 > "Si tu backend no protege, entonces no sirve. Este sí lo hace."
 
+> **🛡️ Auditorías externas superadas:**
+>
+> * 🟢 [SecurityHeaders.com](https://securityheaders.com): **A+**
+> * 🟢 [Mozilla Observatory](https://observatory.mozilla.org): **135 / 100**, **10 / 10 tests pasados**
 ---
 
 ## 🚀 Características principales
@@ -97,6 +101,15 @@ Cumple con OWASP ASVS nivel 2 y se aproxima al nivel 3:
 
 ---
 
+## 📈 Recomendaciones Mozilla Observatory (implementadas)
+
+* `Content-Security-Policy` avanzada con `nonce`
+* `Permissions-Policy` y `Referrer-Policy` en modo restrictivo
+* `Strict-Transport-Security` con preload
+* `Cross-Origin-*` headers: aislamiento de recursos
+* Cabeceras `X-*` correctamente aplicadas
+
+---
 ## 🐳 Despliegue con Docker
 
 ```bash
