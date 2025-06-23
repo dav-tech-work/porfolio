@@ -9,6 +9,10 @@ Este proyecto no es un porfolio más. Es una aplicación web **modular, segura y
 >
 > * 🟢 [SecurityHeaders.com](https://securityheaders.com): **A+**
 > * 🟢 [Mozilla Observatory](https://observatory.mozilla.org): **135 / 100**, **10 / 10 tests pasados**
+> *    [Qualys SSL Labs](https://www.ssllabs.com/ssltest/index.html): **B**
+> * 🟢 [Hardenize](https://www.hardenize.com/report/daniel-arribas-velazquez.dav-tech.work/1750704715) **Resultados**
+> * 🟢 [ImmuniWeb SSLScan](https://www.immuniweb.com/ssl/): **A+**
+> * 🟢 [UpGuard Web Scan](https://www.upguard.com/webscan): **908/950**
 ---
 
 ## 🚀 Características principales
