@@ -1,5 +1,5 @@
-# 🔐 Porfolio Web Seguro ![Security Level](https://img.shields.io/badge/security-135%2F100%20A%2B-brightgreen)
-![Security](https://img.shields.io/badge/security-9.5%2F10-brightgreen)
+# 🔐 Porfolio Web Seguro ![Security Level](https://img.shields.io/badge/security-135%2F100%20A%2B-brightgreen) ![Security](https://img.shields.io/badge/security-9.5%2F10-brightgreen)
+
 
 Este proyecto no es un porfolio más. Es una aplicación web **modular, segura y escalable** diseñada desde cero con foco en la **seguridad, el control y la portabilidad**, tanto para desarrolladores como para usuarios.
 
