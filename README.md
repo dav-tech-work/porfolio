@@ -8,7 +8,7 @@ Este proyecto no es un porfolio más. Es una aplicación web **modular, segura y
 > **🛡️ Auditorías externas superadas:**
 >
 > * 🟢 [SecurityHeaders.com](https://securityheaders.com): **A+**
-> * 🟢 [Mozilla Observatory](https://observatory.mozilla.org): **120 / 100**, **9 / 10 tests pasados**
+> * 🟢 [Mozilla Observatory](https://observatory.mozilla.org): **130 / 100**, **10 / 10 tests pasados**
 > * 🟠 [Qualys SSL Labs](https://www.ssllabs.com/ssltest/index.html): **B**
 > * 🟢 [Hardenize](https://www.hardenize.com/report/daniel-arribas-velazquez.dav-tech.work/1750704715) **Resultados completos**
 > * 🟢 [ImmuniWeb SSLScan](https://www.immuniweb.com/ssl/): **A+**
