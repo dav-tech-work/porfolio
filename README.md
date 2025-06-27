@@ -71,7 +71,7 @@ Este proyecto no es un porfolio más. Es una aplicación web **modular, segura y
 | **Configuración** | ✅ Unificada     | CSP, CSRF y caché centralizados     |
 | **Seguridad**     | ✅ Reforzada     | Middleware CSRF personalizado       |
 | **Arquitectura**  | ✅ Optimizada    | Rutas y configuración reorganizadas |
-| **Docker**        | ✅ Estandarizado | Puerto 3001 en toda la aplicación   |
+| **Docker**        | ✅ Estandarizado | Puerto estandar en toda la aplicación   |
 
 ---
 
