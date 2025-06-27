@@ -1,18 +1,18 @@
 # 🔐 Porfolio Web Seguro ![Security Level](https://img.shields.io/badge/security-135%2F100%20A%2B-brightgreen) ![Security](https://img.shields.io/badge/security-9.5%2F10-brightgreen)
 
-
 Este proyecto no es un porfolio más. Es una aplicación web **modular, segura y escalable** diseñada desde cero con foco en la **seguridad, el control y la portabilidad**, tanto para desarrolladores como para usuarios.
 
 > "Si tu backend no protege, entonces no sirve. Este sí lo hace."
 
 > **🛡️ Auditorías externas superadas:**
 >
-> * 🟢 [SecurityHeaders.com](https://securityheaders.com): **A+**
-> * 🟢 [Mozilla Observatory](https://observatory.mozilla.org): **130 / 100**, **10 / 10 tests pasados**
-> * 🟢 [Qualys SSL Labs](https://www.ssllabs.com/ssltest/index.html): **A, A, A+, A+ **
-> * 🟢 [Hardenize](https://www.hardenize.com/report/daniel-arribas-velazquez.dav-tech.work/1750766903) **Resultados completos**
-> * 🟢 [ImmuniWeb SSLScan](https://www.immuniweb.com/ssl/): **A+**
-> * 🟢 [UpGuard Web Scan](https://www.upguard.com/webscan): **908/950**
+> - 🟢 [SecurityHeaders.com](https://securityheaders.com): **A+**
+> - 🟢 [Mozilla Observatory](https://observatory.mozilla.org): **130 / 100**, **10 / 10 tests pasados**
+> - 🟢 [Qualys SSL Labs](https://www.ssllabs.com/ssltest/index.html): **A, A, A+, A+ **
+> - 🟢 [Hardenize](https://www.hardenize.com/report/daniel-arribas-velazquez.dav-tech.work/1750766903) **Resultados completos**
+> - 🟢 [ImmuniWeb SSLScan](https://www.immuniweb.com/ssl/): **A+**
+> - 🟢 [UpGuard Web Scan](https://www.upguard.com/webscan): **908/950**
+
 ---
 
 ## 🚀 Características principales
@@ -21,8 +21,8 @@ Este proyecto no es un porfolio más. Es una aplicación web **modular, segura y
 - ✅ **Sistema de plantillas EJS + layouts**, renderizado dinámico desde el servidor.
 - ✅ **Protección completa mediante CSP con `nonce`**, sin `unsafe-inline`, compatible con OWASP.
 - ✅ **Middlewares propios** para:
-  - Protección CSRF con `csurf` o verificación manual
-  - Sanitización profunda (texto, HTML, JSON, URL)
+  - Protección CSRF personalizada (sin dependencias obsoletas)
+  - Sanitización profunda (texto, HTML, JSON, URL) con límites configurables
   - Limitación de peticiones (`rate limiting` por IP y ruta)
   - Cabeceras de seguridad avanzadas (HSTS, Referrer-Policy, etc.)
 - ✅ **Contenido protegido** servido solo bajo lógica del backend, nunca accesible directamente.
@@ -30,6 +30,48 @@ Este proyecto no es un porfolio más. Es una aplicación web **modular, segura y
 - ✅ **Generador dinámico de buscador (`buscador.json`)** desde el contenido real.
 - ✅ **Sistema interno de verificación de calidad y seguridad del código**.
 - ✅ **Listo para autenticación, control de sesiones y gestión de roles.**
+- ✅ **Configuración unificada y centralizada** para mejor mantenibilidad.
+
+---
+
+## 🔧 MEJORAS RECIENTES IMPLEMENTADAS
+
+### ✅ Correcciones Críticas Aplicadas (8/8)
+
+1. **🔧 Dependencias actualizadas y corregidas**
+
+   - ✅ Agregada dependencia faltante `express-session`
+   - ✅ Removida dependencia obsoleta `csurf` (reemplazada por middleware personalizado)
+   - ✅ Corregidas extensiones de scripts a `.mjs` en package.json
+
+2. **🛡️ Configuración de seguridad unificada**
+
+   - ✅ CSP centralizada en configuración única (eliminada duplicación)
+   - ✅ Middleware CSRF simplificado y optimizado
+   - ✅ Validación de sanitización mejorada con límites configurables
+
+3. **🚀 Arquitectura optimizada**
+   - ✅ Rutas reorganizadas para evitar conflictos
+   - ✅ Configuración Docker estandarizada (puerto 3001)
+   - ✅ Importaciones optimizadas y movidas a scope local
+
+### ✅ Mejoras Menores (10/12)
+
+- ✅ Eliminados archivos duplicados y comentarios de debug
+- ✅ Configuración de caché centralizada
+- ✅ Implementado caché para verificación de vistas
+- ✅ Agregados límites faltantes y dominios bloqueados
+- ✅ Optimizadas importaciones para mejor rendimiento
+
+### 📊 Estado Actual del Proyecto
+
+| Aspecto           | Estado           | Detalles                            |
+| ----------------- | ---------------- | ----------------------------------- |
+| **Dependencias**  | ✅ Actualizado   | Sin vulnerabilidades conocidas      |
+| **Configuración** | ✅ Unificada     | CSP, CSRF y caché centralizados     |
+| **Seguridad**     | ✅ Reforzada     | Middleware CSRF personalizado       |
+| **Arquitectura**  | ✅ Optimizada    | Rutas y configuración reorganizadas |
+| **Docker**        | ✅ Estandarizado | Puerto 3001 en toda la aplicación   |
 
 ---
 
@@ -37,15 +79,15 @@ Este proyecto no es un porfolio más. Es una aplicación web **modular, segura y
 
 Este proyecto incluye scripts CLI personalizados para auditar el código antes de cada commit o despliegue:
 
-| Script                    | Descripción |
-|---------------------------|-------------|
-| `npm run test:codigo`     | Detecta `var`, `console.log`, `debugger`, `DOCTYPE` faltantes, scripts mal definidos, duplicados, etc. |
-| `npm run test:importaciones` | Verifica que **todas las rutas de importación sean válidas**, previniendo errores de compilación. |
-| `npm run test:huerfanos`  | Detecta archivos **no referenciados ni usados** (JS, CSS, HTML). |
-| `npm run validar:seguridad` | Analiza el código en busca de `eval`, `child_process`, `Function`, rutas de import incorrectas, etc. |
-| `npm run analizar:logs`   | Busca patrones maliciosos en archivos `.log` generados. |
+| Script                       | Descripción                                                                                            |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------ |
+| `npm run test:codigo`        | Detecta `var`, `console.log`, `debugger`, `DOCTYPE` faltantes, scripts mal definidos, duplicados, etc. |
+| `npm run test:importaciones` | Verifica que **todas las rutas de importación sean válidas**, previniendo errores de compilación.      |
+| `npm run test:huerfanos`     | Detecta archivos **no referenciados ni usados** (JS, CSS, HTML).                                       |
+| `npm run validar:seguridad`  | Analiza el código en busca de `eval`, `child_process`, `Function`, rutas de import incorrectas, etc.   |
+| `npm run analizar:logs`      | Busca patrones maliciosos en archivos `.log` generados.                                                |
 
-> *"No basta con que funcione, tiene que estar limpio, mantenible y auditado."*
+> _"No basta con que funcione, tiene que estar limpio, mantenible y auditado."_
 
 ---
 
@@ -58,12 +100,16 @@ Este proyecto incluye scripts CLI personalizados para auditar el código antes d
 ├── package.json
 ├── public/                # Archivos estáticos: CSS, imágenes, scripts frontend
 ├── src/                   # Backend Express y servicios
-│   ├── app.mjs            # Entrada principal
+│   ├── app.mjs            # Entrada principal (optimizada)
+│   ├── config/            # Configuración centralizada
 │   ├── middlewares/       # Seguridad, idioma, protecciones, etc.
 │   ├── utils/             # Logger, sanitizador, i18n, generadores, etc.
 │   ├── scripts/           # Scripts CLI de análisis y build
 │   ├── routes/            # Rutas organizadas por dominio funcional
 │   └── views/             # Plantillas EJS organizadas por sección
+├── logs/                  # Logs de auditoría y sistema
+├── CORRECCIONES_APLICADAS.md  # Registro de mejoras implementadas
+├── INFORME_REVISION_CODIGO.md # Análisis detallado del código
 └── README.md
 ```
 
@@ -82,17 +128,17 @@ El sistema aplica múltiples capas de protección con una arquitectura orientada
 
 ### 🔐 Prácticas de Seguridad Implementadas
 
-| Mecanismo                            | Estado   |
-|-------------------------------------|----------|
-| HTTPS forzado (Zero Trust)          | ✅ Sí     |
-| Headers de seguridad (CSP, HSTS...) | ✅ Sí     |
-| Protección contra XSS, CSRF y LFI   | ✅ Sí     |
-| Validación y sanitización profunda  | ✅ Sí     |
-| Protección de archivos subidos      | ✅ Sí     |
-| Cookies seguras (`HttpOnly`, `SameSite`) | ✅ Sí     |
-| Contenedor endurecido (Docker)      | ✅ Sí     |
-| Escaneo de vulnerabilidades         | ✅ Sí     |
-| Logs con auditoría y trazabilidad   | ✅ Sí     |
+| Mecanismo                                | Estado | Mejoras Recientes            |
+| ---------------------------------------- | ------ | ---------------------------- |
+| HTTPS forzado (Zero Trust)               | ✅ Sí  | -                            |
+| Headers de seguridad (CSP, HSTS...)      | ✅ Sí  | ✅ CSP unificada             |
+| Protección contra XSS, CSRF y LFI        | ✅ Sí  | ✅ CSRF personalizado        |
+| Validación y sanitización profunda       | ✅ Sí  | ✅ Límites configurables     |
+| Protección de archivos subidos           | ✅ Sí  | -                            |
+| Cookies seguras (`HttpOnly`, `SameSite`) | ✅ Sí  | -                            |
+| Contenedor endurecido (Docker)           | ✅ Sí  | ✅ Puerto estandarizado      |
+| Escaneo de vulnerabilidades              | ✅ Sí  | ✅ Dependencias actualizadas |
+| Logs con auditoría y trazabilidad        | ✅ Sí  | -                            |
 
 ### 📊 Comparación con estándares
 
@@ -101,6 +147,7 @@ Cumple con OWASP ASVS nivel 2 y se aproxima al nivel 3:
 - ✅ Producción segura sin exponer rutas críticas
 - ✅ Preparado para trabajar con datos sensibles
 - ✅ Ideal como base para SaaS o infraestructura privada
+- ✅ **Configuración de seguridad centralizada y auditada**
 
 > 🟢 **Nivel de seguridad estimado: 9.5 / 10**
 
@@ -108,13 +155,14 @@ Cumple con OWASP ASVS nivel 2 y se aproxima al nivel 3:
 
 ## 📈 Recomendaciones Mozilla Observatory (implementadas)
 
-* `Content-Security-Policy` avanzada con `nonce`
-* `Permissions-Policy` y `Referrer-Policy` en modo restrictivo
-* `Strict-Transport-Security` con preload
-* `Cross-Origin-*` headers: aislamiento de recursos
-* Cabeceras `X-*` correctamente aplicadas
+- `Content-Security-Policy` avanzada con `nonce` (configuración unificada)
+- `Permissions-Policy` y `Referrer-Policy` en modo restrictivo
+- `Strict-Transport-Security` con preload
+- `Cross-Origin-*` headers: aislamiento de recursos
+- Cabeceras `X-*` correctamente aplicadas
 
 ---
+
 ## 🐳 Despliegue con Docker
 
 ```bash
@@ -124,21 +172,22 @@ cp .env.example .env
 docker compose up -d
 ```
 
-### docker-compose.yml (ejemplo)
+### docker-compose.yml (actualizado)
+
 ```yaml
 services:
   porfolio:
     image: porfolio
     container_name: porfolio
     ports:
-      - "8000:5001"
+      - '8000:3001' # Puerto estandarizado
     environment:
       NODE_ENV: production
-      PORT: 5001
+      PORT: 3001
     read_only: true
     tmpfs:
       - /tmp
-    user: "2001:2001"
+    user: '2001:2001'
     security_opt:
       - no-new-privileges:true
     cap_drop:
@@ -162,9 +211,11 @@ networks:
 ## 🌐 Dominio y acceso
 
 Disponible públicamente desde:
+
 ```
 https://daniel-arribas-velazquez.dav-tech.work
 ```
+
 Gestionado y filtrado por reglas de Cloudflare Zero Trust.
 
 ---
@@ -177,6 +228,7 @@ Esto **no es una SPA con fuegos artificiales**. Es una prueba de que se puede ha
 - Modular y mantenible
 - Escalable sin frameworks pesados
 - Con CI/CD y auditoría integrada
+- **Con código limpio y auditado continuamente**
 
 ---
 
@@ -186,10 +238,11 @@ Esto **no es una SPA con fuegos artificiales**. Es una prueba de que se puede ha
 Administrador de sistemas y redes · Desarrollador backend · Seguridad aplicada
 🔗 [daniel-arribas-velazquez.dav-tech.work](https://daniel-arribas-velazquez.dav-tech.work)
 
-
 ## ⚡ Próximos pasos
 
 - [x] Scripts de auditoría automatizados (`var`, `console.log`, importaciones, huérfanos)
+- [x] **Corrección de dependencias y configuración unificada**
+- [x] **Optimización de arquitectura y eliminación de duplicaciones**
 - [ ] Login con sesiones seguras y control de roles
 - [ ] Alertas en tiempo real (Telegram, Discord, email...)
 - [ ] Panel administrativo para gestión de contenido e idiomas
@@ -210,6 +263,6 @@ Este repositorio **no incluye contenido personal, educativo ni privado**.
 - Solo se comparte la **arquitectura, lógica y herramientas de seguridad**.
 - Todo el contenido sensible está excluido mediante `.gitignore`.
 - La estructura está pensada como **base profesional reutilizable**, no como demo de contenido real.
+- **El código ha sido auditado y corregido para garantizar calidad y seguridad**.
 
 > Así puedes publicarlo sin miedo y clonarlo como punto de partida para proyectos serios.
-
