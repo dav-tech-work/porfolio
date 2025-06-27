@@ -8,8 +8,8 @@ Este proyecto no es un porfolio más. Es una aplicación web **modular, segura y
 >
 > - 🟢 [SecurityHeaders.com](https://securityheaders.com): **A+**
 > - 🟢 [Mozilla Observatory](https://observatory.mozilla.org): **130 / 100**, **10 / 10 tests pasados**
-> - 🟢 [Qualys SSL Labs](https://www.ssllabs.com/ssltest/index.html): **A, A, A+, A+ **
-> - 🟢 [Hardenize](https://www.hardenize.com/report/daniel-arribas-velazquez.dav-tech.work/1750766903) **Resultados completos**
+> - 🟢 [Qualys SSL Labs](https://www.ssllabs.com/ssltest/index.html): **A+, A+, A+, A+ **
+> - 🟢 [Hardenize](https://www.hardenize.com/report/daniel-arribas-velazquez.dav-tech.work/1751065695) **Resultados completos**
 > - 🟢 [ImmuniWeb SSLScan](https://www.immuniweb.com/ssl/): **A+**
 > - 🟢 [UpGuard Web Scan](https://www.upguard.com/webscan): **908/950**
 
@@ -75,12 +75,12 @@ Este proyecto demuestra **competencias técnicas excepcionales** que superan sig
 
 ### **💼 VALOR PROFESIONAL DEMOSTRADO:**
 
-✅ **Demuestra experiencia avanzada** en desarrollo full-stack
-✅ **Conocimientos profundos** de seguridad web aplicada
-✅ **Capacidad para proyectos complejos** y críticos
-✅ **Mentalidad de calidad empresarial** y mejores prácticas
-✅ **Superior al 90%** de portafolios personales del mercado
-✅ **Listo para entornos de producción** empresarial
+- ✅ **Demuestra experiencia avanzada** en desarrollo full-stack
+- ✅ **Conocimientos profundos** de seguridad web aplicada
+- ✅ **Capacidad para proyectos complejos** y críticos
+- ✅ **Mentalidad de calidad empresarial** y mejores prácticas
+- ✅ **Superior al 90%** de portafolios personales del mercado
+- ✅ **Listo para entornos de producción** empresarial
 
 ---
 
