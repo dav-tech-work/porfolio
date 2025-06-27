@@ -52,7 +52,7 @@ Este proyecto no es un porfolio más. Es una aplicación web **modular, segura y
 
 3. **🚀 Arquitectura optimizada**
    - ✅ Rutas reorganizadas para evitar conflictos
-   - ✅ Configuración Docker estandarizada (puerto 3001)
+   - ✅ Configuración Docker estandarizada
    - ✅ Importaciones optimizadas y movidas a scope local
 
 ### ✅ Mejoras Menores (10/12)
