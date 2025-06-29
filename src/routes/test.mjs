@@ -1,11 +1,11 @@
 import express from "express";
-import { validarTokenCSRF } from "../middlewares/csrf.mjs";
+import { verifyCSRFToken } from "../middlewares/csrf-modern.mjs";
 import { sanitize } from "../utils/seguridad/sanitize.mjs";
 
 const router = express.Router();
 
 // Middleware local para bloquear esta ruta en producción
-router.use((req, res, next) => {
+router.use((_req, res, next) => {
   if (process.env.NODE_ENV === "production") {
     return res.status(403).send("⛔ Ruta no disponible en producción.");
   }
@@ -25,7 +25,7 @@ router.get("/test", (req, res) => {
 });
 
 // POST: Procesa el formulario con validación CSRF
-router.post("/test", validarTokenCSRF, (req, res) => {
+router.post("/test", verifyCSRFToken, (req, res) => {
   const nombre = sanitize.text(req.body.nombre);
 
   if (!nombre || nombre.length === 0) {

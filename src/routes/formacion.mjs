@@ -1,14 +1,18 @@
 import express from "express";
+import path from "path";
+import fs from "fs";
+
 const router = express.Router();
 
-// Ruta principal: /formacion
-router.get("/formacion", (req, res) => {
+// Ruta principal: /
+router.get("/", (req, res) => {
   res.render("paginas/formacion", {
     titulo: req.traducciones?.formacion || "Formación",
     tipo: "formacion",
     idioma: req.idioma,
     t: req.traducciones,
-    csrfToken: req.csrfToken
+    csrfToken: res.locals.csrfToken || req.csrfToken,
+    nonce: res.locals.nonce
   });
 });
 
@@ -18,23 +22,62 @@ const secciones = [
   "python/practicas",
   "javascript/teoria",
   "javascript/practicas",
-  "html/teoria",
-  "html/practicas",
-  "sistemas/practicas/practica_01_sistemas"
-];
+  "html",
+  "php",
+  "sistemas/practicas/practica_01_sistemas",
+  "construccion"
+].map(s => s.replace(/^\/+|\/+$/g, ''));
+
+// ✅ CORREGIDO: Cache para verificación de vistas (optimización)
+const vistaCache = new Map();
+
+// Función para verificar si existe una vista
+function existeVista(app, nombreVista) {
+  // ✅ CORREGIDO: Usar caché para evitar verificaciones repetidas
+  if (vistaCache.has(nombreVista)) {
+    return vistaCache.get(nombreVista);
+  }
+
+  try {
+    const viewsPath = app.get("views");
+    const rutaVista = path.join(viewsPath, "paginas", "formacion", `${nombreVista}.ejs`);
+    const existe = fs.existsSync(rutaVista);
+
+    // Cachear resultado
+    vistaCache.set(nombreVista, existe);
+    return existe;
+  } catch (error) {
+    vistaCache.set(nombreVista, false);
+    return false;
+  }
+}
 
 // Renderizado dinámico usando EJS desde views/paginas/formacion/<slug>.ejs
 secciones.forEach(slug => {
-  router.get(`/formacion/${slug}`, (req, res) => {
+  router.get(`/${slug}`, (req, res) => {
     const slugParts = slug.split("/");
     const nombreVista = slugParts.join("_"); // Ejemplo: python_teoria
 
+    // Verifica si la vista existe
+    if (!existeVista(req.app, nombreVista)) {
+      return res.render("paginas/construccion", {
+        titulo: req.traducciones?.construccion || "En construcción",
+        tipo: "construccion",
+        idioma: req.idioma,
+        t: req.traducciones,
+        csrfToken: res.locals.csrfToken || req.csrfToken,
+        nonce: res.locals.nonce
+      });
+    }
+
+    // Renderiza la vista correspondiente
     res.render(`paginas/formacion/${nombreVista}`, {
       titulo: req.traducciones?.[nombreVista] || slug,
-      tipo: nombreVista, 
+      tipo: nombreVista,
       idioma: req.idioma,
       t: req.traducciones,
-      csrfToken: req.csrfToken
+      csrfToken: res.locals.csrfToken || req.csrfToken,
+      nonce: res.locals.nonce
     });
   });
 });

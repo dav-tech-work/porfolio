@@ -8,13 +8,9 @@ const staticExtensions = [
 ];
 
 const rateLimitMiddleware = rateLimit({
-  windowMs: config.RATE_LIMIT.WINDOW_MS, // Ejemplo: 15 minutos
-  max: config.RATE_LIMIT.MAX_REQUESTS,    // Ejemplo: 100 solicitudes por IP
-  // Excluir recursos estáticos para que no cuenten en el límite:
-  skip: (req, res) => {
-    return staticExtensions.some(ext => req.path.endsWith(ext));
-  },
-  // Handler para solicitudes que excedan el límite:
+  windowMs: config.RATE_LIMIT.WINDOW_MS,
+  max: config.RATE_LIMIT.MAX_REQUESTS,
+  skip: (req, res) => staticExtensions.some(ext => req.path.endsWith(ext)),
   handler: (req, res) => {
     const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
     const ruta = req.originalUrl || req.url;
@@ -23,7 +19,7 @@ const rateLimitMiddleware = rateLimit({
     res.set("Retry-After", retryAfter.toString());
     res.status(429).json({
       error: "Demasiadas solicitudes. Por favor, intenta más tarde.",
-      retryAfter: retryAfter
+      retryAfter
     });
   }
 });

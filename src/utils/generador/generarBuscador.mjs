@@ -44,7 +44,10 @@ function generarBuscador() {
     fs.writeFileSync(SALIDA_JSON, JSON.stringify(resultados, null, 2), "utf-8");
 
     if (process.env.NODE_ENV !== "production") {
-      console.log(`✅ Buscador generado: ${resultados.length} páginas indexadas.`);
+      // Solo mostrar en desarrollo
+      if (process.env.NODE_ENV === 'development') {
+        console.log(`✅ Buscador generado: ${resultados.length} páginas indexadas.`);
+      }
     }
   } catch (err) {
     console.error("❌ Error al generar el buscador:", err.message);

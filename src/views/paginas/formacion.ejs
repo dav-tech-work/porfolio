@@ -26,21 +26,11 @@
         </div>
       </div>
 
-      <!-- Categoría: Web -->
-      <div class="formacion-category" aria-label="Formación en desarrollo web">
+      <!-- Categoría: Programación javascript -->
+       <div class="formacion-category" aria-label="Formación en desarrollo web">
         <div class="topic-section">
-          <h3 class="topic-title"><%= t["education.web.title"] %></h3>
+          <h3 class="topic-title"><%= t["education.javascript.title"] %></h3>
           <div class="topic-content">
-            <div class="topic-item">
-              <h4><%= t["education.web.html.title"] %></h4>
-              <p><%= t["education.web.html.description"] %></p>
-              <a href="/formacion/html/teoria" class="topic-link"><%= t["education.theory"] %></a>
-            </div>
-            <div class="topic-item">
-              <h4><%= t["education.web.html.practices.title"] %></h4>
-              <p><%= t["education.web.html.practices.description"] %></p>
-              <a href="/formacion/html/practicas" class="topic-link"><%= t["education.practices"] %></a>
-            </div>
             <div class="topic-item">
               <h4><%= t["education.web.js.title"] %></h4>
               <p><%= t["education.web.js.description"] %></p>
@@ -55,6 +45,25 @@
         </div>
       </div>
 
+      <!-- Categoría: Web -->
+      <div class="formacion-category" aria-label="Formación en desarrollo web">
+        <div class="topic-section">
+          <h3 class="topic-title"><%= t["education.web.title"] %></h3>
+          <div class="topic-content">
+            <div class="topic-item">
+              <h4><%= t["education.web.html.title"] %></h4>
+              <p><%= t["education.web.html.description"] %></p>
+              <a href="/formacion/html" class="topic-link"><%= t["education.theory"] %></a>
+            </div>
+            <div class="topic-item">
+              <h4><%= t["education.php.sql.title"] %></h4>
+              <p><%= t["education.php.sql.description"] %></p>
+              <a href="/formacion/php" class="topic-link"><%= t["education.theory"] %></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Categoría: Sistemas -->
       <div class="formacion-category" aria-label="Formación en sistemas">
         <div class="topic-section">
@@ -63,7 +72,7 @@
             <div class="topic-item">
               <h4><%= t["education.systems.practice1.title"] %></h4>
               <p><%= t["education.systems.practice1.description"] %></p>
-              <a href="/formacion/sistemas/practicas/practica_01_sistemas" class="topic-link">
+              <a href="/pages/sistemas/practica_01_sistemas.html" class="topic-link">
                 <%= t["education.practice.01"] %>
               </a>
             </div>

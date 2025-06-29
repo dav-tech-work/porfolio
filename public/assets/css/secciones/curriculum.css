@@ -195,8 +195,8 @@
     list-style: none;
 }
 
-.cv-header, 
-.cv-section.profile, 
+.cv-header,
+.cv-section.profile,
 .cv-section.skills {
     display: block;
 }

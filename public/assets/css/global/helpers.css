@@ -9,7 +9,7 @@
   .invisible {
     visibility: hidden;
   }
-  
+
   /* 🔲 Centrados */
   .center {
     display: flex;
@@ -23,7 +23,7 @@
     margin-left: auto;
     margin-right: auto;
   }
-  
+
   /* 🧱 Espaciado */
   .mt-1 { margin-top: 0.5rem; }
   .mt-2 { margin-top: 1rem; }
@@ -31,7 +31,7 @@
   .mb-2 { margin-bottom: 1rem; }
   .p-1  { padding: 0.5rem; }
   .p-2  { padding: 1rem; }
-  
+
   /* 🎨 Colores auxiliares */
   .text-muted {
     color: var(--text-muted, #888);
@@ -43,19 +43,19 @@
     background-color: #212529;
     color: #fff;
   }
-  
+
   /* 🖼️ Imagen responsiva */
   .img-fluid {
     max-width: 100%;
     height: auto;
     display: block;
   }
-  
+
   /* ⚡ Transiciones básicas */
   .transition {
     transition: all 0.3s ease-in-out;
   }
-  
+
   /* 🧩 Grid simples */
   .grid-2 {
     display: grid;
@@ -67,4 +67,3 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
   }
-  

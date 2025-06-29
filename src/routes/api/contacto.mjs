@@ -1,5 +1,6 @@
 import express from "express";
 import { procesarFormularioContacto, prepararCorreo, registrar } from "../../utils/servicios/index.mjs";
+import config from "../../config/index.mjs";
 
 const router = express.Router();
 
@@ -13,7 +14,7 @@ router.post("/api/contacto", express.json(), async (req, res) => {
 
   const correo = prepararCorreo({
     de: resultado.datos.email,
-    para: "danielarribasvelazquez@dav-tech.work",
+    para: config.EMAIL.ADMIN,
     asunto: "📬 Nuevo mensaje desde el formulario de contacto",
     mensaje: resultado.datos.mensaje
   });
@@ -31,8 +32,8 @@ router.post("/api/contacto", express.json(), async (req, res) => {
   });
 });
 
-router.get("/api/email", (req, res) => {
-  res.json({ email: "danielarribasvelazquez@dav-tech.work" });
+router.get("/api/email", (_req, res) => {
+  res.json({ email: config.EMAIL.ADMIN });
 });
 
 export default router;

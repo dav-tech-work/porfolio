@@ -21,7 +21,7 @@ h1 {
     display: block;
     color:whitesmoke;
     text-align:left;
-} 
+}
 h2 {
     color: #333;
 }
@@ -46,12 +46,12 @@ li {
 .fondo {
     width: 100%;/* Ancho completo de la pantalla */
     height:100%;/* Alto completo de la pantalla */
-    background-image: url('../img/fondo2.jpg');
+    background-image: url('/assets/css/sistemas/practica_01/img/fondo2.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
-    
+
+
 }
 .contenido {
     position: relative; /* Permite que el contenido se desplace */

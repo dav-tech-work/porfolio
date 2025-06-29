@@ -9,7 +9,7 @@
   <title><%= titulo || "Portafolio de Daniel Arribas" %></title>
 
   <!-- Favicon -->
-  <link rel="icon" href="/assets/img/favicon/favicon-32x32.png" type="image/png" />
+  <link rel="icon" href="/assets/img/dav_logo_editado.svg" type="image/svg+xml" />
 
   <!-- Google Fonts -->
   <link
@@ -28,47 +28,44 @@
 
   <!-- Estilos globales -->
   <link rel="stylesheet" href="/assets/css/global/base.css" />
-  <link rel="stylesheet" href="/assets/css/global/colores.css" />
   <link rel="stylesheet" href="/assets/css/global/helpers.css" />
   <link rel="stylesheet" href="/assets/css/global/search.css" />
-
-  <!-- Content Security Policy -->
-  <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self' 'nonce-<%= nonce %>'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:;">
-
   <!-- Scripts comunes -->
   <% const scriptsList = typeof scripts !== "undefined" ? scripts : []; %>
   <% scriptsList.forEach(src => { %>
-    <script src="<%= src %>" nonce="<%= nonce %>" defer></script>
+    <link rel="preload" href="<%= src %>" as="script" crossorigin="anonymous">
+    <script src="<%= src %>" nonce="<%= nonce %>" defer crossorigin="anonymous"></script>
   <% }) %>
 
   <!-- Estilo por sección -->
   <%
     const tiposCode = [
-      "html_practicas", "html_teoria",
       "javascript_practicas", "javascript_teoria",
+      "php", "html",
       "python_practicas", "python_teoria"
     ];
   %>
-  <% if (tiposCode.includes(tipo)) { %>
-    <link rel="stylesheet" href="/assets/css/secciones/code.css" />
-
-    <!-- Highlight.js para resaltado de sintaxis -->
+  <% if (tiposCode.includes(tipo)) { %>    <!-- Highlight.js y estilos de código -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        if (window.hljs) {
-          console.log('highlight.js cargado correctamente en head.ejs');
-        } else {
-          console.error('highlight.js NO se cargó correctamente en head.ejs');
-        }
-      });
-    </script>
-  <% } else if (tipo) { %>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/vs2015.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    >
+    <link rel="stylesheet" href="/assets/css/secciones/code.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"
+      nonce="<%= nonce %>"
+    ></script>    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"
+      nonce="<%= nonce %>"
+    ></script>
+    <script
+      src="/assets/js/highlight-init.js"
+      nonce="<%= nonce %>"
+      defer
+    ></script>  <% } else if (tipo) { %>
     <link rel="stylesheet" href="/assets/css/secciones/<%= tipo %>.css" />
   <% } %>
 </head>

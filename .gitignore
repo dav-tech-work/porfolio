@@ -62,4 +62,6 @@ src/views/paginas/error.ejs
 **/fondo1.zip
 **/*.py
 src/utils/seguridad/olds/
-src/contenido_protegido
+src/contenido_protegido/
+public/assets/programacion/
+public/assets/pages/

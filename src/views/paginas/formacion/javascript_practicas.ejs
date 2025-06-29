@@ -1,17 +1,90 @@
 <main class="code-container" role="main" aria-labelledby="titulo-practicas-js">
-  <h1 id="titulo-practicas-js" class="page-title"><%= t["js.practices.title"] %></h1>
+  <h1 id="titulo-practicas-js" class="page-title"><%= t["js.practices.subtitle"] %></h1>
 
   <div id="content">
-    <% for (let i = 1; i <= 10; i++) { %>
-      <details aria-label="<%= t['js.practices.label'] %> <%= i %>">
-        <summary tabindex="0"><%= t["js.practices.label"] %> <%= i %></summary>
+    <%
+    const practicas = [
+      { numero: 1, nombre: '01_practica.js' },
+      { numero: 2, nombre: '02_practica.js' },
+      {
+        numero: 3,
+        nombre: 'anagramas.js',
+        titulo: 'Anagramas'
+      },
+      {
+        numero: 4,
+        nombre: 'calculadora.js',
+        titulo: 'Calculadora'
+      },
+      {
+        numero: 5,
+        nombre: 'dias_semana.js',
+        titulo: 'Días de la semana'
+      },
+      {
+        numero: 6,
+        nombre: 'ej_numero_primo.js',
+        titulo: 'Números primos'
+      },
+      {
+        numero: 7,
+        nombre: 'ej_saludo.js',
+        titulo: 'Ejemplo de saludo'
+      },
+      {
+        numero: 8,
+        nombre: 'palindromos.js',
+        titulo: 'Palíndromos'
+      }
+    ];
+    %>
+
+    <% practicas.forEach(practica => { %>
+      <details aria-label="<%= t['js.practices.label'] %> <%= practica.numero %>">
+        <summary tabindex="0">
+          <%= t["education.practice"] %> <%= practica.numero %>
+          <% if (practica.titulo) { %>
+            - <%= practica.titulo %>
+          <% } %>
+        </summary>
         <pre>
           <code
             class="language-javascript"
-            data-src="/public/assets/programacion/javascript/practicas/<%= String(i).padStart(2, '0') %>_practica.js">
+            data-src="/assets/programacion/javascript/practicas/<%= practica.nombre %>">
           </code>
         </pre>
       </details>
-    <% } %>
+    <% }) %>
+
+    <!-- Ejemplos adicionales -->
+    <details aria-label="<%= t['js.practices.label'] %> - Random">
+      <summary tabindex="0"><%= t["education.practice"] %> - Random</summary>
+      <pre>
+        <code
+          class="language-javascript"
+          data-src="/assets/programacion/javascript/practicas/random.js">
+        </code>
+      </pre>
+    </details>
+
+    <details aria-label="<%= t['js.practices.label'] %> - Traductor">
+      <summary tabindex="0"><%= t["education.practice"] %> - Traductor de días</summary>
+      <pre>
+        <code
+          class="language-javascript"
+          data-src="/assets/programacion/javascript/practicas/traductor_de_dias.js">
+        </code>
+      </pre>
+    </details>
+
+    <details aria-label="<%= t['js.practices.label'] %> - Primer JavaScript">
+      <summary tabindex="0"><%= t["education.practice"] %> - Primer JavaScript</summary>
+      <pre>
+        <code
+          class="language-javascript"
+          data-src="/assets/programacion/javascript/practicas/primer_javascript.js">
+        </code>
+      </pre>
+    </details>
   </div>
 </main>

@@ -42,7 +42,8 @@ router.get("/curriculum", (req, res) => {
     tipo: "curriculum",
     idioma: req.idioma,
     t: req.traducciones,
-    csrfToken: req.csrfToken
+    csrfToken: req.csrfToken,
+    scripts: []
   });
 });
 
@@ -56,5 +57,6 @@ router.get("/proyectos", (req, res) => {
     csrfToken: req.csrfToken
   });
 });
+
 
 export default router;

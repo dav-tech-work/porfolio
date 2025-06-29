@@ -9,36 +9,38 @@ const __dirname = path.dirname(__filename);
 /**
  * Carga el archivo de idioma correspondiente al código recibido.
  * Hace fallback a "es" si el idioma no existe o es inválido.
- * @param {string} lang - Código del idioma, por ejemplo "es", "en", "pt-br".
+ * @param {string} idioma - Código del idioma, por ejemplo "es", "en", "pt-br".
  * @returns {Object} - Objeto con las traducciones o vacío si falla.
  */
-function cargarIdioma(lang = "es") {
-  const rutaIdioma = path.resolve(__dirname, "..", "..", "contenido_protegido", "i18n", `${lang}.json`);
+export function cargarIdioma(idioma = "es") {
+    const rutaIdioma = path.join(__dirname, `../../contenido_protegido/idiomas/${idioma}.json`);
 
-  if (process.env.NODE_ENV !== "production") {
-    console.log(`📁 Buscando archivo de idioma: ${rutaIdioma}`);
-  }
+    // Solo mostrar en desarrollo
+    if (process.env.NODE_ENV === 'development') {
+        console.log(`📁 Buscando archivo de idioma: ${rutaIdioma}`);
+    }
 
-  if (!fs.existsSync(rutaIdioma)) {
-    if (process.env.NODE_ENV !== "production") {
-      console.warn(`⚠️ Archivo de idioma '${lang}' no encontrado.`);
-    }
-    return lang !== "es" ? cargarIdioma("es") : {};
-  }
+    try {
+        const contenido = fs.readFileSync(rutaIdioma, "utf8");
+        const json = JSON.parse(contenido);
 
-  try {
-    const contenido = fs.readFileSync(rutaIdioma, "utf-8");
-    const json = JSON.parse(contenido);
-    if (typeof json !== "object" || Array.isArray(json)) {
-      throw new Error("El contenido no es un objeto válido.");
+        // Validar que sea un objeto válido
+        if (typeof json !== "object" || Array.isArray(json)) {
+            throw new Error("El contenido no es un objeto válido.");
+        }
+
+        return json;
+    } catch (error) {
+        if (process.env.NODE_ENV !== "production") {
+            console.warn(`⚠️ Error al cargar '${idioma}.json': ${error.message}`);
+        }
+
+        // Fallback al español si no se encuentra el idioma
+        if (idioma !== "es") {
+            return cargarIdioma("es");
+        }
+        return {};
     }
-    return json;
-  } catch (err) {
-    if (process.env.NODE_ENV !== "production") {
-      console.warn(`⚠️ Error al parsear '${lang}.json': ${err.message}`);
-    }
-    return lang !== "es" ? cargarIdioma("es") : {};
-  }
 }
 
 /**
@@ -47,7 +49,7 @@ function cargarIdioma(lang = "es") {
  * @returns {Object} traducciones
  */
 function obtenerTraducciones(lang = "es") {
-  return cargarIdioma(lang);
+    return cargarIdioma(lang);
 }
 
-export { obtenerTraducciones, cargarIdioma };
+export { obtenerTraducciones };

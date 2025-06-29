@@ -1,38 +1,43 @@
 <main class="code-container" role="main" aria-labelledby="titulo-teoria-js">
-  <h1 id="titulo-teoria-js" class="page-title"><%= t["js.theory.title"] %></h1>
+  <h1 id="titulo-teoria-js" class="page-title"><%= t["js.theory.subtitle"] %></h1>
 
   <div id="content">
 
-    <% const bloques = {
-      variables: ["01_variables.js", "10_metodos_strings.js"],
-      conditionals: ["02_condicionales.js"],
-      logic: ["08_operadores_logicos.js"],
-      loops: ["04_bucle.js", "12_bucle_while.js", "14_bucles_for.js"],
-      objects: ["07_objetos.js", "13_objetos.js"],
-      arrays: ["06_arrays.js", "09_arrays.js", "11_metodos_arrays.js"],
-      functions: ["15_funciones.js"],
-      dom: ["16_DOM.js"],
-      review: ["repaso_js.js"]
-    }; %>
+    <% const bloques = [
+      { id: "codigo_variables", clave: "variables", archivos: ["01_variables.js", "10_metodos_strings.js"] },
+      { id: "codigo_condicionales", clave: "conditionals", archivos: ["02_condicionales.js"] },
+      { id: "codigo_logicos", clave: "logic", archivos: ["08_operadores_logicos.js"] },
+      { id: "codigo_bucles", clave: "loops", archivos: ["04_bucle.js", "12_bucle_while.js", "14_bucles_for.js"] },
+      { id: "codigo_strings", clave: "strings", archivos: ["05_strings.js"] },
+      { id: "codigo_numeros", clave: "numbers", archivos: ["03_operadores_matematicos.js"] },
+      { id: "codigo_excepciones", clave: "exceptions", archivos: ["17_excepciones.js"] },
+      { id: "codigo_librerias", clave: "libraries", archivos: ["18_librerias.js"] },
+      { id: "codigo_match", clave: "match", archivos: ["19_match.js"] },
+      { id: "codigo_objetos", clave: "objects", archivos: ["07_objetos.js", "13_objetos.js"] },
+      { id: "codigo_arrays", clave: "arrays", archivos: ["06_arrays.js", "09_arrays.js", "11_metodos_arrays.js"] },
+      { id: "codigo_funciones", clave: "functions", archivos: ["15_funciones.js"] },
+      { id: "codigo_dom", clave: "dom", archivos: ["16_DOM.js"] },
+      { id: "codigo_repaso", clave: "review", archivos: ["repaso_js.js"] }
+    ]; %>
 
-    <% for (const [clave, archivos] of Object.entries(bloques)) { %>
-      <details aria-label="<%= t[`js.theory.${clave}`] %>">
-        <summary tabindex="0"><%= t[`js.theory.${clave}`] %></summary>
-        <% if (clave === "dom") { %>
+    <% bloques.forEach(bloque => { %>
+      <details aria-label="<%= t[`js.theory.${bloque.clave}`] %>">
+        <summary tabindex="0"><%= [`${bloque.clave}`] %></summary>
+        <% if (bloque.clave === "dom") { %>
           <iframe
-            src="/public/assets/programacion/javascript/teoria/16_DOM.html"
+            src="/assets/programacion/javascript/teoria/16_DOM.html"
             sandbox="allow-scripts allow-same-origin"
             title="Demostración de manipulación del DOM"
           ></iframe>
-          <a href="/public/assets/programacion/javascript/teoria/16_DOM.html">
+          <a href="/assets/programacion/javascript/teoria/16_DOM.html">
             DOM
           </a>
         <% } %>
-        <% archivos.forEach(nombre => { %>
-          <pre><code class="language-javascript" data-src="/public/assets/programacion/javascript/teoria/<%= nombre %>"></code></pre>
+        <% bloque.archivos.forEach(archivo => { %>
+          <pre><code class="language-javascript" id="<%= bloque.id %>" data-src="/assets/programacion/javascript/teoria/<%= archivo %>"></code></pre>
         <% }) %>
       </details>
-    <% } %>
+    <% }) %>
 
   </div>
 </main>

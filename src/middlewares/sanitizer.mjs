@@ -1,8 +1,14 @@
 import { sanitize } from "../utils/seguridad/index.mjs";
+import { registrar } from "../utils/servicios/logger.mjs";
 
 export default function sanitizerMiddleware(req, res, next) {
-  if (req.body) req.body = sanitize.json(req.body);
-  if (req.query) req.query = sanitize.json(req.query);
-  if (req.params) req.params = sanitize.json(req.params);
+  ["body", "query", "params"].forEach(field => {
+    const original = req[field];
+    const sanitized = sanitize.json(original);
+    if (JSON.stringify(original) !== JSON.stringify(sanitized)) {
+      registrar(`Sanitización aplicada en '${field}'`, "info");
+    }
+    req[field] = sanitized;
+  });
   next();
 }

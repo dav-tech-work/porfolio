@@ -24,7 +24,7 @@ export function tiempoEjecucion(fn, etiqueta = "Ejecutando") {
     } finally {
       const fin = process.hrtime.bigint();
       const duracionMs = Number(fin - inicio) / 1_000_000;
-      if (process.env.NODE_ENV !== "production") {
+      if (process.env.NODE_ENV === "development") {
         console.log(`⏱ ${etiqueta}: ${duracionMs.toFixed(2)} ms`);
       }
     }

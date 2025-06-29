@@ -5,6 +5,7 @@ import { initMail } from "./navegacion/mail.js";
 import { initPersonalizacionModal } from "./tema/personalizacion_modal_dinamico.js";
 import { initNavegacion } from "./navegacion/navegacion.js";
 import { initMuestraContenido } from "./muestra_contenido.js";
+import { initPageTransitions } from "./navegacion/pageTransitions.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   // 🌍 Idioma con persistencia en cookie
@@ -24,7 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 🚀 Navegación y comportamiento general
   initNavegacion();
-  
+
   // 📄 Carga de código bajo demanda
   initMuestraContenido();
+
+  // 🔄 Transiciones entre páginas
+  initPageTransitions();
 });

@@ -1,17 +1,28 @@
 import { validarEmail } from "../seguridad/validate.mjs";
 import { sanitize } from "../seguridad/sanitize.mjs";
-import { validarTokenCSRF } from "../../middlewares/csrf.mjs";
 
-export function procesarFormularioContacto(req) {
-  const { body, cookies } = req;
+export async function procesarFormularioContacto(req) {
+  const { body, session } = req;
 
   // Extraer campos relevantes
-  const { email, mensaje, nombre, website, csrf: tokenCliente } = body;
-  const tokenServidor = cookies.csrfToken;
+  const { email, mensaje, nombre, website, _csrf: tokenCliente } = body;
+  const tokenServidor = session?.csrfToken;
 
-  // CSRF
-  if (!validarTokenCSRF(tokenCliente, tokenServidor)) {
+  // CSRF - Verificación manual usando crypto.timingSafeEqual
+  if (!tokenCliente || !tokenServidor) {
     return { ok: false, error: "Token CSRF inválido." };
+  }
+
+  try {
+    const crypto = await import('crypto');
+    if (!crypto.timingSafeEqual(
+      Buffer.from(tokenServidor, 'hex'),
+      Buffer.from(tokenCliente, 'hex')
+    )) {
+      return { ok: false, error: "Token CSRF inválido." };
+    }
+  } catch (error) {
+    return { ok: false, error: "Error de validación CSRF." };
   }
 
   // Honeypot

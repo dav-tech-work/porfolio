@@ -1,226 +1,208 @@
-// src/app.mjs
+// app.mjs - Versión simplificada para debugging
 
-// Importar módulos nativos y de terceros con ES Modules
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import path from "path";
 import cookieParser from "cookie-parser";
-import fs from "fs";
 import helmet from "helmet";
 import expressLayouts from "express-ejs-layouts";
 import crypto from "crypto";
 import { fileURLToPath } from "url";
-import csurf from "csurf";
+import session from "express-session";
 
-// Importar middlewares y utilidades personalizados
+// Middlewares
 import idioma from "./middlewares/idioma.mjs";
 import logger from "./middlewares/logger.mjs";
 import protecciones from "./middlewares/protecciones.mjs";
 import sanitizer from "./middlewares/sanitizer.mjs";
 import limiter from "./middlewares/limiter.mjs";
-import { attachCsrfToken } from "./middlewares/csrf-token-handler.mjs";
+import { attachCSRFToken, verifyCSRFToken } from "./middlewares/csrf-modern.mjs";
+
+// Utilidades y configuración
 import { usarCompresion } from "./utils/optimizacion/index.mjs";
 import { registrar } from "./utils/servicios/logger.mjs";
-
-// Importar configuración centralizada
 import config from "./config/index.mjs";
 
-// Importar rutas
+// Rutas
 import homeRoutes from "./routes/home.mjs";
 import formacionRoutes from "./routes/formacion.mjs";
 import contactoRoutes from "./routes/api/contacto.mjs";
 import protegidasRoutes from "./routes/protegidas.mjs";
 import testRoutes from "./routes/test.mjs";
 
-// Configuración para obtener __dirname en ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Inicializar la aplicación Express y definir puerto
 const app = express();
-const PORT = config.PORT || 3000;
+const PORT = config.PORT || 3001;
 
-// Configuración del motor de vistas EJS + layouts
+console.log('🚀 Iniciando servidor...');
+console.log('📁 __dirname:', __dirname);
+console.log('🔧 Puerto:', PORT);
+console.log('🌍 Entorno:', config.ENV);
+
+// Configuración de tipos MIME para archivos estáticos
+express.static.mime.define({'text/css': ['css']});
+
+// Middleware para servir archivos estáticos
+app.use(express.static(path.join(__dirname, '../public'), {
+  setHeaders: (res, path) => {
+    if (path.endsWith('.css')) {
+      res.setHeader('Content-Type', 'text/css');
+    }
+  }
+}));
+
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 app.use(expressLayouts);
 app.set("layout", "layout");
 
-// Middleware para generar un nonce para CSP
-app.use((req, res, next) => {
+// Middleware para nonce
+app.use((_req, res, next) => {
   const nonce = crypto.randomBytes(16).toString("base64");
   res.locals.nonce = nonce;
   next();
 });
 
-// Configuración de seguridad con Helmet
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", (req, res) => `'nonce-${res.locals.nonce}'`, "https://cdnjs.cloudflare.com", "https://cdn.jsdelivr.net", "https://static.cloudflareinsights.com"],
-        styleSrc: ["'self'", (req, res) => `'nonce-${res.locals.nonce}'`, "https://fonts.googleapis.com", "https://cdnjs.cloudflare.com"],
-        fontSrc: ["'self'", "https://fonts.gstatic.com", "https://cdnjs.cloudflare.com"],
-        imgSrc: ["'self'", "data:", "https:"],
-        connectSrc: ["'self'"],
-        objectSrc: ["'none'"],
-        baseUri: ["'self'"],
-        formAction: ["'self'"],
-        frameAncestors: ["'none'"]
-      }
-    },
-    xssFilter: true,
-    noSniff: true,
-    referrerPolicy: { policy: "strict-origin-when-cross-origin" },
-    hsts: {
-      maxAge: 15552000,
-      includeSubDomains: true,
-      preload: true
-    },
-    frameguard: { action: "deny" }
-  })
-);
+// Configuración básica de Helmet
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'none'"],
+      scriptSrc: ["'self'", (_req, res) => `'nonce-${res.locals.nonce}'`, "https://cdnjs.cloudflare.com"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com", "https://fonts.googleapis.com"],
+      imgSrc: ["'self'", "data:"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com", "https://cdnjs.cloudflare.com"],
+      connectSrc: ["'self'"],
+      manifestSrc: ["'self'"],
+      baseUri: ["'none'"],
+      formAction: ["'self'"],
+      frameAncestors: ["'self'"],
+      frameSrc: ["'self'"]
+    }
+  }
+}));
 
-// Configurar proxy trust
+// Configuración básica
 app.set("trust proxy", 1);
-
-// Middlewares esenciales
-app.use(cookieParser({ secure: config.ENV === "production", httpOnly: true, sameSite: "strict" }));
+app.use(cookieParser());
 app.use(usarCompresion({ level: 6, threshold: 500 }));
 
-// Archivos estáticos
-const cacheOptions = { maxAge: config.ENV === "production" ? "1d" : 0, etag: true, lastModified: true };
-app.use("/assets", express.static(path.join(__dirname, "..", "public", "assets"), cacheOptions));
-app.use("/pages/sistemas", express.static(path.join(__dirname, "..", "public", "pages", "sistemas"), cacheOptions));
-app.use("/assets/programacion", express.static(path.join(__dirname, "..", "public", "assets", "programacion"), cacheOptions));
+// Configuración de archivos estáticos
+const cacheOptions = {
+  maxAge: config.CACHE.STATIC_MAX_AGE,
+  etag: true,
+  lastModified: true
+};
 
-// Middlewares personalizados
+app.use('/assets', express.static(path.join(__dirname, '..', 'public', 'assets'), cacheOptions));
+app.use('/favicon.ico', express.static(path.join(__dirname, '..', 'public', 'favicon.ico'), { maxAge: '1d' }));
+
+// Middlewares básicos
 app.use(logger);
 app.use(protecciones);
 app.use(idioma);
 
-// CSRF
+// Configuración de sesiones
+app.use(session({
+  secret: config.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: config.ENV === "production",
+    httpOnly: true,
+    maxAge: 24 * 60 * 60 * 1000,
+    sameSite: "strict"
+  }
+}));
+
+// CSRF simplificado
 const csrfExcludedPaths = ["/api/webhook"];
 app.use((req, res, next) => {
   if (csrfExcludedPaths.includes(req.path)) return next();
-  return csurf({ cookie: { httpOnly: true, secure: config.ENV === "production", sameSite: "strict" } })(req, res, next);
-});
-app.use(attachCsrfToken);
 
-app.use(limiter);
-app.use(sanitizer);
-app.use(express.json({ limit: "50kb" }));
-app.use(express.urlencoded({ extended: true, limit: "50kb" }));
+  attachCSRFToken(req, res, (err) => {
+    if (err) return next(err);
 
-// Rutas
-app.use("/", homeRoutes);
-app.use("/", formacionRoutes);
-app.use("/", contactoRoutes);
-app.use("/", protegidasRoutes);
-if (config.ENV === "development" || config.ENV === "test") {
-  app.use("/", testRoutes);
-  registrar("Rutas de prueba habilitadas en entorno: " + config.ENV, "warn");
-}
-
-// Ruta raíz personalizada
-app.get("/", (req, res) => {
-  try {
-    res.render("paginas/index", {
-      titulo: req.traducciones?.home || "Inicio",
-      tipo: "home",
-      idioma: req.idioma,
-      t: req.traducciones,
-      csrfToken: res.locals.csrfToken,
-      nonce: res.locals.nonce
-    });
-  } catch (err) {
-    registrar(`Error al renderizar index.ejs: ${err.message}`, "error");
-    const mensajeError = config.ENV === "production" ? "Ha ocurrido un error al cargar la página" : `Error al renderizar index.ejs: ${err.message}`;
-    res.status(500).render("paginas/error", {
-      titulo: "Error",
-      tipo: "error",
-      idioma: req.idioma || "es",
-      t: req.traducciones || {},
-      mensaje: mensajeError,
-      nonce: res.locals.nonce
-    });
-  }
-});
-
-// Ruta dinámica
-app.get("/pagina/:nombre", async (req, res) => {
-  const { nombre } = req.params;
-  const paginasPermitidas = ["curriculum", "proyectos", "formacion", "python_teoria", "python_practicas", "javascript_teoria", "javascript_practicas", "html_teoria", "html_teorias"];
-  if (!nombre || /[\/\\.]/.test(nombre) || nombre.includes("..") || !paginasPermitidas.includes(nombre)) {
-    return res.status(404).render("paginas/404", { titulo: "404", tipo: "error", idioma: req.idioma, t: req.traducciones, nonce: res.locals.nonce });
-  }
-
-  const rutasPosibles = [`paginas/formacion/${nombre}`, `paginas/${nombre}`];
-  for (const ruta of rutasPosibles) {
-    const filePath = path.join(__dirname, "views", `${ruta}.ejs`);
-    try {
-      await fs.promises.access(filePath, fs.constants.F_OK);
-      return res.render(ruta, {
-        tipo: nombre,
-        titulo: req.traducciones[nombre] || nombre,
-        idioma: req.idioma,
-        t: req.traducciones,
-        csrfToken: res.locals.csrfToken,
-        nonce: res.locals.nonce
-      });
-    } catch (err) {}
-  }
-
-  res.status(404).render("paginas/404", {
-    titulo: "404",
-    tipo: "error",
-    idioma: req.idioma,
-    t: req.traducciones,
-    nonce: res.locals.nonce
+    const methodsToCheck = ['POST', 'PUT', 'DELETE', 'PATCH'];
+    if (methodsToCheck.includes(req.method)) {
+      verifyCSRFToken(req, res, next);
+    } else {
+      next();
+    }
   });
 });
 
-// Errores globales
-app.use((err, req, res, next) => {
-  registrar(`Error no controlado: ${err.message}\n${err.stack}`, "error");
-  const mensajeError = config.ENV === "production" ? "Ha ocurrido un error inesperado" : `Error: ${err.message}`;
+app.use(limiter);
+app.use(sanitizer);
+app.use(express.json({ limit: config.LIMITS.JSON_BODY }));
+app.use(express.urlencoded({ extended: true, limit: config.LIMITS.FORM_BODY }));
+
+// Rutas principales
+app.use("/", homeRoutes);
+app.use("/formacion", formacionRoutes);
+app.use("/", contactoRoutes);
+app.use("/", protegidasRoutes);
+
+if (config.IS_DEV || config.IS_TEST) {
+  app.use("/", testRoutes);
+  console.log("⚠️ Rutas de prueba habilitadas");
+}
+
+// Ruta de construcción
+app.get("/construccion", (req, res) => {
+  res.render("paginas/construccion", {
+    titulo: req.traducciones?.construccion || "En construcción",
+    tipo: "construccion",
+    idioma: req.idioma,
+    t: req.traducciones,
+    csrfToken: res.locals.csrfToken,
+    nonce: res.locals.nonce,
+    layout: 'layout'
+  });
+});
+
+// Manejo de errores
+app.use((err, req, res, _next) => {
+  console.error('❌ Error:', err.message);
+  registrar(`Error no controlado: ${err.message}`, "error");
   res.status(500).render("paginas/error", {
     titulo: "Error",
     tipo: "error",
     idioma: req.idioma || "es",
     t: req.traducciones || {},
-    mensaje: mensajeError,
+    mensaje: config.IS_PROD ? "Ha ocurrido un error inesperado" : `Error: ${err.message}`,
     nonce: res.locals.nonce
   });
 });
 
-// Fallback 404
+// 404
 app.use((req, res) => {
-  try {
-    registrar(`Fallback 404 activado para: ${req.originalUrl}`, "warn");
-    res.status(404).render("paginas/404", {
-      titulo: "404",
-      tipo: "error",
-      idioma: req.idioma || "es",
-      t: req.traducciones || {},
-      mensaje: "Página no encontrada",
-      nonce: res.locals.nonce
-    });
-  } catch (err) {
-    registrar(`Error en el fallback 404: ${err.message}`, "error");
-    res.status(500).send("Error interno del servidor");
-  }
+  console.log('🔍 404 para:', req.originalUrl);
+  res.status(404).render("paginas/404", {
+    titulo: "404",
+    tipo: "error",
+    idioma: req.idioma || "es",
+    t: req.traducciones || {},
+    mensaje: "Página no encontrada",
+    nonce: res.locals.nonce
+  });
 });
 
-// Iniciar servidor
 const server = app.listen(PORT, () => {
+  console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`🌍 Entorno: ${config.ENV}`);
   registrar(`Servidor corriendo en http://localhost:${PORT} (Entorno: ${config.ENV})`, "info");
 });
 
-// Cierre limpio
 process.on("SIGTERM", () => {
+  console.log('🛑 SIGTERM recibido, cerrando servidor...');
   registrar("SIGTERM recibido, cerrando servidor...", "info");
   server.close(() => {
+    console.log('✅ Proceso terminado correctamente');
     registrar("Proceso terminado correctamente", "info");
   });
 });

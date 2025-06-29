@@ -1,0 +1,10 @@
+/* Estilos para errores en bloques de código */
+code.error {
+  color: #ff3860;
+  background: #feecf0;
+  padding: 1rem;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  font-family: monospace;
+  display: block;
+}

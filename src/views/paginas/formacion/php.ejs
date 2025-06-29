@@ -1,0 +1,44 @@
+<main class="container">
+    <section class="topic-section php-content">
+        <h1 class="page-title"><%= t["education.php.sql.practices.title"] %></h1>
+        <div class="topic-content-container php-layout">
+            <h2 class="topic-title"> <%= t["education.php.sql.sql.title"] %></h2>
+            <div class="topic-content">
+                <div class="topic-item">
+                    <div id="content">
+                        <% const temas = [
+                          { id: "Conceptos_Basicos", archivo: "Conceptos_Basicos.sql", clave: "Conceptos Básicos" },
+                          { id: "Renting_Cars", archivo: "renting_cars.sql", clave: "Renting Cars" },
+                          { id: "enunciados", archivo: "renting_cars_enunciados.sql", clave: "Enunciados Renting Cars" },
+                          { id: "biblioteca", archivo: "biblioteca.sql", clave: "Base de Datos Biblioteca" },
+                          { id: "colores", archivo: "colores.sql", clave: "Gestor de Colores" },
+                          { id: "gestor_tareas", archivo: "gestor_tareas.sql", clave: "Gestor de Tareas" },
+                          { id: "repaso", archivo: "repaso.sql", clave: "Ejercicios de Repaso" },
+                          { id: "ejercicio_1_db", archivo: "ejecicio_1_db.sql", clave: "Ejercicio 1 - Base de Datos" },
+                          { id: "ejercicio_1", archivo: "ejeracicio_1.sql", clave: "Ejercicio 1 - Consultas" }
+                        ]; %>
+
+                        <% temas.forEach(({ id, archivo, clave }) => { %>
+                          <details aria-label="<%= clave %>">
+                            <summary tabindex="0"><%= clave %></summary>
+                            <pre><code class="language-sql" id="<%= id %>" data-src="/assets/programacion/web/php_sql/bases/<%= archivo %>"></code></pre>
+                          </details>
+                        <% }) %>
+                    </div>
+                </div>
+            </section>            <h2 class="topic-title"><%= t["education.php.sql.php.title"] %></h2>
+            <div class="topic-content">
+                <div class="topic-item">
+                    <h3 class="topic-title-1"><%= t["education.practice.01"] %></h3>
+                    <ul>
+                        <li><a href="/assets/programacion/web/php_sql/colores/index" class="topic-link" target="_blank">Colores</a></li>
+                    </ul>
+                    <h3 class="topic-title-1"><%= t["education.practice.02"] %></h3>
+                    <ul>
+                        <li><a href="/assets/programacion/web/php_sql/gestor_tareas/index" class="topic-link" target="_blank">Gestor de Tareas</a></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </section>
+</main>

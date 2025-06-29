@@ -3,8 +3,6 @@
 function initNavegacion() {
     const menuToggle = document.querySelector('.menu-toggle');
     const menuItems = document.querySelector('.menu-items');
-
-
     if (!menuToggle || !menuItems) {
         console.error('No se encontraron elementos de navegación necesarios');
         return;
